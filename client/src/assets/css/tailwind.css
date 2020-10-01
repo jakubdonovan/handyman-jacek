@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-2xl font-roboto font-bold;
+  }
+
+  h2 {
+    @apply text-2xl text-gray-500 font-bold tracking-wide capitalize;
+  }
+
+  h4 {
+    @apply;
+  }
+
+  p {
+    @apply font-inter font-normal text-lg text-white leading-5;
+  }
+
+  input {
+    @apply mt-1 bg-gray-100 rounded-lg px-2 py-1;
+  }
+
+  textarea {
+    @apply mt-1 bg-gray-100 rounded-lg px-2 py-1;
+  }
+}
