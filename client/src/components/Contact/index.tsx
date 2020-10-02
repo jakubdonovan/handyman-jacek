@@ -5,7 +5,7 @@ interface ContactProps {}
 export const Contact: React.FC<ContactProps> = ({}) => {
   return (
     <div className="mt-2 mx-2 bg-white shadow-lg rounded-lg">
-      <h2 className="h2 text-center">get a quote</h2>
+      <h2 className="h2 pt-4 text-center">get a quote</h2>
 
       <div className="mt-5 flex justify-around">
         <img
@@ -36,14 +36,14 @@ export const Contact: React.FC<ContactProps> = ({}) => {
 
       <div className="flex flex-col px-4 py-2">
         <div className="flex items-center ">
-          <FaMailBulk className="text-gray-400 mx-2" />
+          <FaMailBulk className="text-blue-400 mx-2" />
           <h5 className="font-roboto text-gray-500">Send me an email</h5>
         </div>
         <input className="w-6/12" placeholder="name" />
         <input className="" placeholder="email" />
         <textarea className="" placeholder="msg" />
         <div className="mt-2 flex justify-center px-12">
-          <button className="px-4 py-2 bg-green-500 rounded-lg shadow-md text-white font-roboto uppercase tracking-widest font-bold">
+          <button className="px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold">
             Send
           </button>
         </div>

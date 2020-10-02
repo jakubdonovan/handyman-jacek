@@ -8,11 +8,15 @@
   }
 
   h2 {
-    @apply text-2xl text-gray-500 font-bold tracking-wide capitalize;
+    @apply font-roboto text-2xl text-gray-400 font-bold tracking-wide capitalize;
   }
 
   h4 {
     @apply;
+  }
+
+  h6 {
+    @apply mb-2 text-gray-500 uppercase tracking-widest font-black font-roboto text-xs text-left;
   }
 
   p {
