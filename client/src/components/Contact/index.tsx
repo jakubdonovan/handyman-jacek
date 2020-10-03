@@ -4,8 +4,16 @@ interface ContactProps {}
 
 export const Contact: React.FC<ContactProps> = ({}) => {
   return (
-    <div className="mt-2 mx-2 bg-white shadow-lg rounded-lg">
-      <h2 className="h2 pt-4 text-center">get a quote</h2>
+    <div
+      style={{ borderRadius: "20px" }}
+      className="mt-2 mx-2 bg-white shadow-lg max-w-4xl my-4"
+    >
+      <h2
+        style={{ borderRadius: "20px 20px 0px 0px" }}
+        className="font-inter p-2 bg-blue-500 text-sm text-white h2 text-left uppercase font-bold leading-none tracking-wide"
+      >
+        get a quote
+      </h2>
 
       <div className="mt-5 flex justify-around">
         <img

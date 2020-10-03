@@ -5,7 +5,7 @@ interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
   const CardProps = {
-    sm: false,
+    sm: true,
     images: [
       {
         title: "b",
@@ -67,7 +67,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
       </div>
       <div className="px-4 flex justify-center mt-4">
         <div
-          className="h-40 w-full bg-cover bg-no-repeat bg-center rounded-lg shadow-lg"
+          className="h-40 w-full bg-cover bg-no-repeat bg-center rounded-lg shadow-lg max-w-sm"
           style={{
             backgroundImage: `url(${require("../../assets/images/uncle.jpg")})`,
           }}
@@ -77,7 +77,9 @@ export const Home: React.FC<HomeProps> = ({}) => {
       <h2 className="mt-2 font-roboto text-lg text-gray-500 font-semibold text-center">
         Your friendly neighborhood handyman!
       </h2>
-      <Contact />
+      <div className="mt-6 flex justify-center">
+        <Contact />
+      </div>
       <div
         style={{ backgroundColor: "#4267B2" }}
         className="flex justify-center"

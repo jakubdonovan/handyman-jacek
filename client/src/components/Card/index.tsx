@@ -35,16 +35,22 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
       {/* Header */}
       <h2 className="font-roboto text-center text-3xl ">Painting Services</h2>
       <div className="mt-4 grid grid-cols-2 grid-flow grid-flow-col-dense text-center">
-        <div className="flex flex-col justify-center items-center">
+        <div
+          className={
+            !props.sm ? "ml-6 flex flex-col justify-center items-center" : ""
+          }
+        >
           {/* Description */}
-          <p className="mt-6 ml-6 w-full text-base leading-8 font-normal overflow-hidden">
+          <p className="mt-6 w-full text-base leading-8 font-normal overflow-hidden">
             Years of Experience in Exterior/Interior Painting and decorating of
             private homes, communal areas and commercial spaces.
           </p>
-          <img
-            className="ml-6 mt-4 w-8/12 md:w-4/12"
-            src={require("../../assets/images/award.png")}
-          />
+          {!props.sm && (
+            <img
+              className="mt-4 w-8/12 md:w-4/12"
+              src={require("../../assets/images/award.png")}
+            />
+          )}
           {/* Show More */}
           <div
             className={`${
@@ -142,7 +148,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               <img
                 onClick={handleClick}
                 className="pr-2 h-full w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
-                src={require("../../assets/images/" + props.images[0].filename)}
+                src={require("../../assets/images/" + "test-2.png")}
               />
 
               <div className="grid grid-row-2 pr-2">
@@ -201,7 +207,6 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                 </p>
               </div>
             </div>
-            <p className="p-4"> back</p>
           </div>
         </>
       )}
