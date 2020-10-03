@@ -4,6 +4,59 @@ import { Contact } from "../../components/Contact";
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
+  const CardProps = {
+    sm: false,
+    images: [
+      {
+        title: "b",
+        content: "a",
+        filename: "a.webp",
+        position: 0,
+        media: (
+          <img
+            className="hover:opacity-75 cursor-pointer w-full h-full"
+            src={require("../../assets/images/a.webp")}
+          />
+        ),
+      },
+      {
+        title: "b",
+        content: "a",
+        filename: "a.webp",
+        position: 1,
+        media: (
+          <img
+            className="w-full h-full"
+            src={require("../../assets/images/a.webp")}
+          />
+        ),
+      },
+      {
+        title: "b",
+        content: "a",
+        filename: "a.webp",
+        position: 2,
+        media: (
+          <img
+            className="w-full h-full"
+            src={require("../../assets/images/a.webp")}
+          />
+        ),
+      },
+      {
+        title: "b",
+        content: "a",
+        filename: "a.webp",
+        position: 3,
+        media: (
+          <img
+            className="w-full h-full"
+            src={require("../../assets/images/a.webp")}
+          />
+        ),
+      },
+    ],
+  };
   return (
     <div className="bg-gray-100">
       <div className="p-2 bg-blue-500 leading-none">
@@ -29,7 +82,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
         style={{ backgroundColor: "#4267B2" }}
         className="flex justify-center"
       >
-        <Card />
+        <Card {...CardProps} />
       </div>
 
       <div className="flex flex-col items-center justify-center">
