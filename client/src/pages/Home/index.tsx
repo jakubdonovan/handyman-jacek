@@ -13,10 +13,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
         filename: "a.webp",
         position: 0,
         media: (
-          <img
-            className="hover:opacity-75 cursor-pointer w-full h-full"
-            src={require("../../assets/images/a.webp")}
-          />
+          <img data-index={0} src={require("../../assets/images/a.webp")} />
         ),
       },
       {
@@ -25,10 +22,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
         filename: "a.webp",
         position: 1,
         media: (
-          <img
-            className="w-full h-full"
-            src={require("../../assets/images/a.webp")}
-          />
+          <img data-index={1} src={require("../../assets/images/a.webp")} />
         ),
       },
       {
@@ -37,10 +31,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
         filename: "a.webp",
         position: 2,
         media: (
-          <img
-            className="w-full h-full"
-            src={require("../../assets/images/a.webp")}
-          />
+          <img data-index={2} src={require("../../assets/images/a.webp")} />
         ),
       },
       {
@@ -49,37 +40,60 @@ export const Home: React.FC<HomeProps> = ({}) => {
         filename: "a.webp",
         position: 3,
         media: (
-          <img
-            className="w-full h-full"
-            src={require("../../assets/images/a.webp")}
-          />
+          <img data-index={3} src={require("../../assets/images/a.webp")} />
+        ),
+      },
+      {
+        title: "b",
+        content: "a",
+        filename: "a.webp",
+        position: 4,
+        media: (
+          <img data-index={4} src={require("../../assets/images/a.webp")} />
         ),
       },
     ],
   };
   return (
-    <div className="bg-gray-100">
-      <div className="p-2 bg-blue-500 leading-none">
-        <h1 className="h1 text-white tracking-wider">Jacek Litwinski</h1>
-        <h4 className="mb-2 font-inter font-light text-sm opacity-50 text-gray-200">
+    <div className="bg-gray-200">
+      {/* Logo */}
+      <div className="p-2 leading-none">
+        <h1 className="h2 text-4xl text-center text-blue-800 tracking-wider">
+          J<span className="text-yellow-500">L</span>
+        </h1>
+        <h4 className="mb-2 font-inter text-gray-500 font-light text-sm opacity-50 text-center ">
           painter and decorator
         </h4>
       </div>
-      <div className="px-4 flex justify-center mt-4">
-        <div
-          className="h-40 w-full bg-cover bg-no-repeat bg-center rounded-lg shadow-lg max-w-sm"
-          style={{
-            backgroundImage: `url(${require("../../assets/images/uncle.jpg")})`,
-          }}
-        />
+      {/* image */}
+      <div className="md:flex lg:justify-end bg-gray-200">
+        <div className="relative flex items-center justify-end md:hidden">
+          <img
+            className=" rounded-tl-lg rounded-bl-lg shadow-lg w-6/12"
+            src={require("../../assets/images/uncle-3.png")}
+          />
+          <div className=" absolute left-0  bg-blue-600 py-3 px-4 border-blue-500 border-8 rounded-full text-white font-bold font-inter text-center sm:text-4xl">
+            Hey, the names Jacek!
+          </div>
+        </div>
+        <div>
+          {/* header */}
+          <h2 className="hidden md:block mt-12 font-roboto text-4xl text-blue-600 font-semibold text-center">
+            Your friendly neighborhood handyman!
+          </h2>
+          {/* Contact Form */}
+          <div className="lg:mt-6 flex justify-center w-full">
+            <Contact />
+          </div>
+        </div>
+        <div className="w-1/3 relative">
+          <img
+            className=" hidden md:block absolute w-full h-full inset-0 object-cover"
+            src={require("../../assets/images/uncle-4.png")}
+          />
+        </div>
       </div>
 
-      <h2 className="mt-2 font-roboto text-lg text-gray-500 font-semibold text-center">
-        Your friendly neighborhood handyman!
-      </h2>
-      <div className="mt-6 flex justify-center">
-        <Contact />
-      </div>
       <div
         style={{ backgroundColor: "#4267B2" }}
         className="flex justify-center"
