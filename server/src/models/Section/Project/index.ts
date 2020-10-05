@@ -14,6 +14,6 @@ export class Project {
   public requirement!: string;
   @prop({ required: true })
   public sqft!: number;
-  @prop({ required: true, type: () => [Image] })
+  @prop({ required: true, type: [Image] })
   public images!: Image[];
 }

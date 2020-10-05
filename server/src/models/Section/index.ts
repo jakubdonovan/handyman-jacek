@@ -15,8 +15,10 @@ class Section {
   public position!: number;
   @prop({ required: true })
   public image!: Image;
-  @prop({ required: true, type: () => [Project] })
+  @prop({ required: true, type: [Project] })
   public projects!: Project[];
+  @prop({ required: true })
+  public bgColor!: string | number;
 }
 
 export default getModelForClass(Section);

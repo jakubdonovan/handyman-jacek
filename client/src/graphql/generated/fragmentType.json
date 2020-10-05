@@ -1,0 +1,21 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "ErrorInterface",
+        "possibleTypes": [
+          {
+            "name": "ValidationError"
+          },
+          {
+            "name": "MongoError"
+          },
+          {
+            "name": "RuntimeError"
+          }
+        ]
+      }
+    ]
+  }
+}
