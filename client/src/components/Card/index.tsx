@@ -18,14 +18,16 @@ interface CardProps {
 export const Card: React.FC<CardProps> = (props: CardProps) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const carousel: any = useRef();
-  const carousel2: any = useRef();
+  const carouselMobile: any = useRef();
+  const [prevSlideClicked, setPrevSlideClicked] = useState<number | null>(null);
+  const [currentSlideClicked, setCurrentSlideClicked] = useState<number>(0);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [currentSlideM, setCurrentSlideM] = useState<number>(0);
+  const [currentSlideMobile, setCurrentSlideMobile] = useState<number>(0);
   const [showMore, setShowMore] = useState<boolean>(!props.sm);
   const handleClick = (e: React.MouseEvent<HTMLImageElement>) => {
     setOpen(!isOpen);
     const index = (e.target as HTMLInputElement).dataset.index;
-    return index && setCurrentSlide(parseInt(index));
+    return index && setCurrentSlideClicked(parseInt(index));
   };
   // Saaad - Gotta rerender the component so that useRef can be called,
   // theres rendering issues when wrapping Carousel with Modal
@@ -41,10 +43,17 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
   useEffect(() => {
     try {
       // Mobile slider
-      const slideM = carousel2.current?.state?.selectedItem;
-      typeof slideM == "number" && setCurrentSlideM(slideM);
+      // Takes Carousel components state
+      const slideM = carouselMobile.current?.state?.selectedItem;
+      typeof slideM == "number" && setCurrentSlideMobile(slideM);
       // Desktop Slider
-      carousel.current.moveTo(currentSlide);
+      const slide = carousel.current?.state?.selectedItem;
+      typeof slide == "number" && setCurrentSlide(slide);
+      if (currentSlideClicked !== prevSlideClicked) {
+        // Move to slide
+        carousel.current.moveTo(currentSlideClicked);
+        setPrevSlideClicked(currentSlideClicked);
+      }
     } catch {}
   });
   return (
@@ -137,7 +146,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               {props.images.map((img) => img.media)}
             </Carousel>
             <p className="tracking-widest m-4 rounded-lg text-sm absolute right-0 bottom-0 bg-gray-900 bg-opacity-50 px-2 py-1">
-              {currentSlideM + 1}/{props.images.length}
+              {currentSlide + 1}/{props.images.length}
             </p>
           </Modal>
 
@@ -146,7 +155,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
             <h2 className="p-4">My portfolio</h2>
             <div className="md:hidden relative h-full w-full shadow-lg">
               <Carousel
-                ref={carousel2}
+                ref={carouselMobile}
                 showArrows={false}
                 showThumbs={false}
                 showStatus={false}
@@ -155,7 +164,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               </Carousel>
 
               <p className="tracking-widest m-4 rounded-lg text-sm absolute right-0 bottom-0 bg-gray-900 bg-opacity-50 px-2 py-1">
-                {currentSlideM + 1}/{props.images.length}
+                {currentSlideMobile + 1}/{props.images.length}
               </p>
             </div>
 

@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@typegoose/typegoose": "^7.4.1",
+    "@types/mongoose": "^5.7.36",
+    "apollo-server-express": "^2.18.1",
+    "express": "^4.17.1",
+    "graphql-compose": "^7.21.5",
+    "graphql-compose-mongoose": "^9.0.0",
+    "mongoose": "^5.10.7"
+  }
+}
