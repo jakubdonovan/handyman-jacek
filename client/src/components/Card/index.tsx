@@ -231,7 +231,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               <div className="flex justify-between p-4 text-center tracking-widest">
                 <div>
                   <h6 className="text-left">Location</h6>
-                  <p className="font-bold text-xl uppercase">
+                  <p className="font-bold text-xl capitalize">
                     {currentProject.location}
                   </p>
                 </div>

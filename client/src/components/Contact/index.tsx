@@ -1,5 +1,7 @@
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { FaMailBulk } from "react-icons/fa";
+import * as Yup from "yup";
 interface ContactProps {}
 
 export const Contact: React.FC<ContactProps> = ({}) => {
@@ -17,15 +19,26 @@ export const Contact: React.FC<ContactProps> = ({}) => {
 
       <div className="mt-5 flex justify-around">
         <img
-          className="h-10 w-10 rounded-full"
+          onClick={() => {
+            window.open("tel:/+44-7873174453");
+          }}
+          className="h-10 w-10 rounded-full hover:bg-opacity-75 cursor-pointer"
           src={require("../../assets/images/phone-2.png")}
         />
         <img
-          className="h-10 w-10"
+          onClick={() => {
+            window.open("https://wa.me/447873174453");
+          }}
+          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
           src={require("../../assets/images/whatsapp.webp")}
         />
         <img
-          className="h-10 w-10"
+          onClick={() => {
+            window.open(
+              "https://www.facebook.com/HandymanJacek-114037603796356"
+            );
+          }}
+          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
           src={require("../../assets/images/messenger.png")}
         />
       </div>
@@ -47,14 +60,63 @@ export const Contact: React.FC<ContactProps> = ({}) => {
           <FaMailBulk className="text-blue-400 mx-2" />
           <h5 className="font-roboto text-gray-500">Send me an email</h5>
         </div>
-        <input className="w-6/12" placeholder="name" />
-        <input className="" placeholder="email" />
-        <textarea className="" placeholder="msg" />
-        <div className="mt-2 flex justify-center px-12">
-          <button className="px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold">
-            Send
-          </button>
-        </div>
+        <Formik
+          // @ts-ignore
+          onSubmit={(values) =>
+            window.open(
+              `mailto:enquiries@handymanjacek.com?subject=Free Quote&body=${values.msg}`
+            )
+          }
+          initialValues={{ name: "", email: "", msg: "" }}
+          validationSchema={Yup.object({
+            name: Yup.string(),
+            email: Yup.string().required().email(),
+            msg: Yup.string().required(),
+          })}
+        >
+          <Form>
+            <Field
+              type="text"
+              id="name"
+              name="name"
+              className="w-6/12"
+              placeholder="name"
+            />
+            <Field
+              as=""
+              type="text"
+              id="email"
+              name="email"
+              placeholder="email"
+            />
+            <Field
+              as="textarea"
+              type="text"
+              id="msg"
+              name="msg"
+              placeholder="msg"
+            />
+            <div className="grid grid-cols-1 text-red-500 mt-5 capitalize">
+              <div>
+                <ErrorMessage name="name" />
+              </div>
+              <div>
+                <ErrorMessage name="email" />
+              </div>
+              <div>
+                <ErrorMessage name="msg" />
+              </div>
+            </div>
+            <div className="mt-2 flex justify-center px-12">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold"
+              >
+                Send
+              </button>
+            </div>
+          </Form>
+        </Formik>
       </div>
     </div>
   );
