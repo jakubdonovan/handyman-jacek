@@ -1,13 +1,21 @@
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import mongoose from "mongoose";
+import graphqlSchema from "./schema";
 
 export default async function startServer() {
   const app = express();
-  mongoose.connect("mongodb://localhost/test", { useNewUrlParser: true });
-  const schema = {};
-  const server = new ApolloServer(schema);
+
+  await mongoose.connect("mongodb://localhost/handyman", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  });
+
+  const server = new ApolloServer({ schema: graphqlSchema });
   server.applyMiddleware({ app });
+
   app.listen(8080, () => {
     console.log("Started Server");
   });
