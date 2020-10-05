@@ -59,7 +59,7 @@ To deploy with gcloud please...
   > Api's with much less boilerplate, easily implement middleware
 * GraphQL
 
-  > Solves the 2n problem with api's
+  > Solves the n+1 problem with api's
 
   - apollo-server-express
     > Easily start a gql server
