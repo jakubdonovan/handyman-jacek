@@ -1,3 +1,5 @@
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -990,3 +992,69 @@ export type SectionsQuery = (
     & SectionDataFragment
   )> }
 );
+
+export const ProjectDataFragmentDoc = gql`
+    fragment ProjectData on SectionProjects {
+  title
+  description
+  location
+  amount
+  requirement
+  sqft
+  images {
+    filename
+    alt
+    position
+  }
+}
+    `;
+export const SectionDataFragmentDoc = gql`
+    fragment SectionData on Section {
+  title
+  shortDescription
+  longDescription
+  amount
+  position
+  bgColor
+  image {
+    filename
+    alt
+    position
+  }
+  projects {
+    ...ProjectData
+  }
+}
+    ${ProjectDataFragmentDoc}`;
+export const SectionsDocument = gql`
+    query sections {
+  sectionMany {
+    ...SectionData
+  }
+}
+    ${SectionDataFragmentDoc}`;
+
+/**
+ * __useSectionsQuery__
+ *
+ * To run a query within a React component, call `useSectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSectionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSectionsQuery(baseOptions?: Apollo.QueryHookOptions<SectionsQuery, SectionsQueryVariables>) {
+        return Apollo.useQuery<SectionsQuery, SectionsQueryVariables>(SectionsDocument, baseOptions);
+      }
+export function useSectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SectionsQuery, SectionsQueryVariables>) {
+          return Apollo.useLazyQuery<SectionsQuery, SectionsQueryVariables>(SectionsDocument, baseOptions);
+        }
+export type SectionsQueryHookResult = ReturnType<typeof useSectionsQuery>;
+export type SectionsLazyQueryHookResult = ReturnType<typeof useSectionsLazyQuery>;
+export type SectionsQueryResult = Apollo.QueryResult<SectionsQuery, SectionsQueryVariables>;

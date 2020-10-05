@@ -1,59 +1,12 @@
 import React from "react";
 import { Card } from "../../components/Card";
 import { Contact } from "../../components/Contact";
+import { useSectionsQuery } from "../../graphql/generated";
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = ({}) => {
-  const CardProps = {
-    sm: true,
-    images: [
-      {
-        title: "b",
-        content: "a",
-        filename: "a.webp",
-        position: 0,
-        media: (
-          <img data-index={0} src={require("../../assets/images/a.webp")} />
-        ),
-      },
-      {
-        title: "b",
-        content: "a",
-        filename: "a.webp",
-        position: 1,
-        media: (
-          <img data-index={1} src={require("../../assets/images/a.webp")} />
-        ),
-      },
-      {
-        title: "b",
-        content: "a",
-        filename: "a.webp",
-        position: 2,
-        media: (
-          <img data-index={2} src={require("../../assets/images/a.webp")} />
-        ),
-      },
-      {
-        title: "b",
-        content: "a",
-        filename: "a.webp",
-        position: 3,
-        media: (
-          <img data-index={3} src={require("../../assets/images/a.webp")} />
-        ),
-      },
-      {
-        title: "b",
-        content: "a",
-        filename: "a.webp",
-        position: 4,
-        media: (
-          <img data-index={4} src={require("../../assets/images/a.webp")} />
-        ),
-      },
-    ],
-  };
+  const { data } = useSectionsQuery();
+
   return (
     <div className="bg-gray-200">
       {/* Logo */}
@@ -94,11 +47,12 @@ export const Home: React.FC<HomeProps> = ({}) => {
         </div>
       </div>
 
-      <div
-        style={{ backgroundColor: "#4267B2" }}
-        className="flex justify-center"
-      >
-        <Card {...CardProps} />
+      <div style={{ backgroundColor: "#4267B2" }} className="grid grid-rows-1">
+        <div className="flex justify-center">
+          {data?.sectionMany.map((section) => {
+            return <Card {...section} />;
+          })}
+        </div>
       </div>
 
       <div className="flex flex-col items-center justify-center">
