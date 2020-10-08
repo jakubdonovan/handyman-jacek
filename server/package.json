@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsnd src/index.ts",
-    "build": "rimraf dist && tsc",
-    "deploy": "yarn build && node dist/index.js"
+    "build": "rimraf dist && tsc"
   },
   "dependencies": {
     "@typegoose/typegoose": "^7.4.1",

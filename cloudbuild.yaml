@@ -1,0 +1,23 @@
+steps:
+  - id: docker build
+    name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/handyman-291920/test", "."]
+  - id: docker push
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/handyman-291920/test"]
+  - id: Deploy to Cloud Run
+    name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - beta
+      - run
+      - deploy
+      - --image
+      - gcr.io/handyman-291920/test
+      - --region
+      - eu-west2
+      - --platform
+      - managed
+      - --allow-unauthenticated
+
+images:
+  - gcr.io/handyman-291920/test

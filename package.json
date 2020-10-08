@@ -5,14 +5,9 @@
   "repository": "https://github.com/jakubdonovan/handyman-jacek.git",
   "author": "jakub <jakubdonovan@protonmail.com>",
   "license": "MIT",
-  "private": true,
-  "workspaces": [
-    "@handyman-jacek/client",
-    "@handyman-jacek/server"
-  ],
   "scripts": {
     "deploy": "yarn deploy:client && yarn deploy:server",
     "deploy:client": "cd ./client && yarn && yarn deploy",
-    "deploy:server": "cd ./server && yarn && yarn deploy"
+    "build:server": "cd ./server && yarn deploy"
   }
 }
