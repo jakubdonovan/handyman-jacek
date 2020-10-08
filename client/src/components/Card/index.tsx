@@ -151,7 +151,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               shouldCloseOnEsc
               shouldCloseOnOverlayClick
             >
-              <Carousel ref={carousel}>
+              <Carousel className="bg-white" ref={carousel}>
                 {props.projects[0]?.images.map((img) => (
                   <img src={require("../../assets/images/" + img?.filename)} />
                 ))}
@@ -166,8 +166,9 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
           {currentProject && (
             <div className="">
               <h2 className="p-4">My portfolio</h2>
-              <div className="md:hidden relative h-full w-full shadow-lg">
+              <div className="md:hidden relative shadow-lg">
                 <Carousel
+                  className="bg-current"
                   ref={carouselMobile}
                   showArrows={false}
                   showThumbs={false}
@@ -186,10 +187,11 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               </div>
 
               <div className="hidden md:grid grid-cols-4 px-2">
+                {/* TODO: use background image, wrap images with skeleton loader */}
                 <img
                   data-index={0}
                   onClick={handleClick}
-                  className="pr-2 h-full w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
+                  className="pr-2 h-64 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
                   src={require("../../assets/images/" +
                     currentProject.images[0]?.filename)}
                 />
@@ -197,7 +199,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                 <div className="grid grid-row-2 pr-2">
                   <img
                     data-index={1}
-                    className="pb-1 cursor-pointer hover:opacity-75"
+                    className="pb-1 cursor-pointer hover:opacity-75 h-32 w-full"
                     onClick={handleClick}
                     src={require("../../assets/images/" +
                       currentProject.images[1]?.filename)}
@@ -205,7 +207,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                   <img
                     data-index={2}
                     onClick={handleClick}
-                    className="pt-1 cursor-pointer hover:opacity-75"
+                    className="pt-1 cursor-pointer hover:opacity-75 h-32 w-full"
                     src={require("../../assets/images/" +
                       currentProject.images[2]?.filename)}
                   />
@@ -215,14 +217,14 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                   <img
                     data-index={3}
                     onClick={handleClick}
-                    className="pb-1 rounded-tr-lg w-full cursor-pointer hover:opacity-75"
+                    className="pb-1 rounded-tr-lg w-full cursor-pointer hover:opacity-75 h-32"
                     src={require("../../assets/images/" +
                       currentProject.images[3]?.filename)}
                   />
                   <img
                     data-index={4}
                     onClick={handleClick}
-                    className="pt-1 rounded-br-lg w-full cursor-pointer hover:opacity-75"
+                    className="pt-1 rounded-br-lg w-full cursor-pointer hover:opacity-75 h-32"
                     src={require("../../assets/images/" +
                       currentProject.images[4]?.filename)}
                   />

@@ -16,6 +16,8 @@ export default async function startServer() {
   const server = new ApolloServer({ schema: graphqlSchema });
   server.applyMiddleware({ app });
 
+  app.use(express.static("../client/build"));
+
   app.listen(8080, () => {
     console.log("Started Server");
   });

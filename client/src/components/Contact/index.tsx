@@ -74,7 +74,7 @@ export const Contact: React.FC<ContactProps> = ({}) => {
             msg: Yup.string().required(),
           })}
         >
-          <Form>
+          <Form className="grid grid-cols-1">
             <Field
               type="text"
               id="name"
@@ -110,7 +110,7 @@ export const Contact: React.FC<ContactProps> = ({}) => {
             <div className="mt-2 flex justify-center px-12">
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold"
+                className="animate-bounce px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold"
               >
                 Send
               </button>
