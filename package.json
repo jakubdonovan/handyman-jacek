@@ -1,13 +1,20 @@
 {
   "name": "handyman-jacek",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "https://github.com/jakubdonovan/handyman-jacek.git",
   "author": "jakub <jakubdonovan@protonmail.com>",
   "license": "MIT",
   "scripts": {
-    "deploy": "yarn deploy:client && yarn deploy:server",
-    "deploy:client": "cd ./client && yarn && yarn deploy",
-    "build:server": "cd ./server && yarn deploy"
-  }
+    "start": "lerna run start",
+    "deploy": "gcloud builds submit .",
+    "generate": "kompose convert"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "lerna": "^3.22.1"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

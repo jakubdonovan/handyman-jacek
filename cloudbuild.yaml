@@ -1,20 +1,22 @@
 steps:
-  - id: docker build
-    name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/handyman-291920/test", "."]
-  - id: docker push
-    name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/handyman-291920/test"]
-  - id: Deploy to Cloud Run
-    name: "gcr.io/cloud-builders/gcloud"
+  - name: "docker/compose:1.19.0"
+    args: ["rm", "-f"]
+
+  - name: "docker/compose:1.19.0"
+    args: ["pull"]
+
+  - name: "gcr.io/handyman-291920/docker-compose"
+    args: ["up", "--build", "-d"]
+
+  - name: "gcr.io/cloud-builders/gcloud"
     args:
-      - beta
       - run
       - deploy
+      - handyman-291920
       - --image
-      - gcr.io/handyman-291920/test
+      - gcr.io/handyman-291920/test:latest
       - --region
-      - eu-west2
+      - europe-west1
       - --platform
       - managed
       - --allow-unauthenticated
