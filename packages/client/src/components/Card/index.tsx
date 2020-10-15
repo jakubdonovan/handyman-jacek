@@ -101,10 +101,14 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                 : "Get a FREE quote!"}
             </div>
           </div>
-
+          {/* Slideshow */}
+          <h2 className="p-4">My portfolio</h2>
           {currentProject && (
             <>
-              <AirbnbCarousel currentProject={currentProject} />
+              {currentProject.images.length > 4 && (
+                //@ts-ignore
+                <AirbnbCarousel images={currentProject.images} />
+              )}
               <div className="flex justify-between p-4 text-center tracking-widest">
                 <div>
                   <h6 className="text-left">Location</h6>

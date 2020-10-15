@@ -1,6 +1,8 @@
 import React from "react";
 import { Card } from "../../components/Card";
 import { Hero } from "../../components/Hero";
+import { Logo } from "../../components/Logo";
+import { Profile } from "../../components/Profile";
 import { useSectionsQuery } from "../../graphql/generated";
 interface HomeProps {}
 
@@ -10,16 +12,16 @@ export const Home: React.FC<HomeProps> = ({}) => {
   return (
     <div className="bg-gray-200">
       {/* Logo */}
-      <div className="p-2 leading-none">
-        <h1 className="h2 text-4xl text-center text-blue-800 tracking-wider">
-          J<span className="text-yellow-500">L</span>
-        </h1>
-        <h4 className="mb-2 font-inter text-gray-500 font-light text-sm opacity-50 text-center ">
-          painter and decorator
-        </h4>
+      <div className="hidden md:block relative">
+        <div className="w-10/12">
+          <Logo />
+        </div>
+        <Hero />
       </div>
 
-      <Hero />
+      <div className="md:hidden">
+        <Profile />
+      </div>
 
       <div style={{ backgroundColor: "#4267B2" }} className="grid grid-rows-1">
         <div className="flex justify-center">
@@ -28,7 +30,6 @@ export const Home: React.FC<HomeProps> = ({}) => {
           })}
         </div>
       </div>
-
       <div className="flex flex-col items-center justify-center">
         <div className="mt-2">
           <h2 className="text-3xl text-gray-900">And much more...</h2>

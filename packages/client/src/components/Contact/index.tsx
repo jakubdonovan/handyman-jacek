@@ -2,13 +2,15 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { FaMailBulk } from "react-icons/fa";
 import * as Yup from "yup";
-interface ContactProps {}
+interface ContactProps {
+  className: string;
+}
 
-export const Contact: React.FC<ContactProps> = ({}) => {
+export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   return (
     <div
       style={{ borderRadius: "20px" }}
-      className="mt-2 mx-2 bg-white shadow-lg max-w-4xl my-4"
+      className={"mt-2 mx-2 bg-white shadow-lg my-4" + props.className}
     >
       <h2
         style={{ borderRadius: "20px 20px 0px 0px" }}

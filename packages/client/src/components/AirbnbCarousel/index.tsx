@@ -1,15 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { GrClose } from "react-icons/gr";
 import Modal from "react-modal";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { SectionProjects } from "../../graphql/generated";
+import { SectionProjectsImages } from "../../graphql/generated";
+
 interface AirbnbCarouselProps {
-  currentProject: SectionProjects;
+  images: SectionProjectsImages[];
 }
 
-export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = ({
-  currentProject,
-}: AirbnbCarouselProps) => {
+const locateImage = (props: any, i: number) =>
+  props.images[i].filename.startsWith("http")
+    ? props.images[i].filename
+    : require("../../assets/images/" + props.images[i]?.filename);
+
+export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
+  props: AirbnbCarouselProps
+) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const carousel: any = useRef();
   const carouselMobile: any = useRef();
@@ -38,10 +46,11 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = ({
       // Mobile slider
       // Takes Carousel components state
       const slideM = carouselMobile.current?.state?.selectedItem;
-      typeof slideM == "number" && setCurrentSlideMobile(slideM);
+      typeof slideM === "number" && setCurrentSlideMobile(slideM);
       // Desktop Slider
       const slide = carousel.current?.state?.selectedItem;
-      typeof slide == "number" && setCurrentSlide(slide);
+      typeof slide === "number" && setCurrentSlide(slide);
+
       if (currentSlideClicked !== prevSlideClicked) {
         // Move to slide
         carousel.current.moveTo(currentSlideClicked);
@@ -50,90 +59,123 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = ({
     } catch {}
   });
   return (
-    <>
-      {/* Slideshow */}
+    <div className="flex items-center max-w-6xl">
       <Modal
-        className=""
+        className="outline-none bg-white text-center transition duration-500 ease-in-out translate-y-full"
         isOpen={isOpen}
         onRequestClose={handleClick}
         shouldCloseOnEsc
         shouldCloseOnOverlayClick
       >
-        <Carousel className="bg-white" ref={carousel}>
-          {currentProject?.images.map((img) => (
-            <img src={require("../../assets/images/" + img?.filename)} />
-          ))}
-        </Carousel>
-        <p className="tracking-widest m-4 rounded-lg text-sm absolute right-0 bottom-0 bg-gray-900 bg-opacity-50 px-2 py-1">
-          {currentSlide + 1}/{currentProject.images.length}
+        {/* Desktop Slideshow */}
+        <div
+          onClick={handleClick}
+          className="flex opacity-75 transition duration-200 ease-in-out transform active:scale-90 text-base cursor-pointer font-medium items-center justify-between px-4 py-1 m-4 absolute left-0 top-0 text-gray-800 bg-gray-200 rounded-lg hover:bg-gray-400"
+        >
+          <GrClose className="mr-1 text-sm font-bold" />
+          Close
+        </div>
+        <p className="mt-4 my-8 text-gray-700 tracking-widest m-4 rounded-lg text-lg px-2 py-1">
+          {currentSlide + 1}/{props.images.length}
         </p>
+        <div className="flex justify-between items-center">
+          <div
+            onClick={() => carousel.current.decrement()}
+            className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
+              !currentSlide && "invisible"
+            }`}
+          >
+            <BiChevronLeft />
+          </div>
+          <Carousel
+            showIndicators={false}
+            showArrows={false}
+            showStatus={false}
+            showThumbs={false}
+            className="w-full max-w-3xl transition duration-200 ease-in-out translate-y-full"
+            ref={carousel}
+          >
+            {props.images.map((img, i) => (
+              <>
+                <img className="" src={locateImage(props, i)} />
+              </>
+            ))}
+          </Carousel>
+          <div
+            onClick={() => carousel.current.increment()}
+            className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
+              currentSlide === props.images.length - 1 && "invisible"
+            } `}
+          >
+            <BiChevronRight />
+          </div>
+        </div>
+        <p className="my-8 text-gray-700">{props.images[currentSlide].alt}</p>
       </Modal>
-      ){/* Portfolio Images */}
-      <div className="">
-        <h2 className="p-4">My portfolio</h2>
+
+      {/* Desktop gallery */}
+      <div className="hidden md:grid grid-cols-4 px-2">
+        {/* TODO: use background image, wrap images with skeleton loader */}
+        <img
+          data-index={0}
+          onClick={handleClick}
+          className="pr-2 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
+          src={locateImage(props, 0)}
+        />
+
+        <div className="grid grid-row-2 pr-2">
+          <img
+            data-index={1}
+            className="pb-1 cursor-pointer hover:opacity-75 "
+            onClick={handleClick}
+            src={locateImage(props, 1)}
+          />
+          <img
+            data-index={2}
+            onClick={handleClick}
+            className="pt-1 cursor-pointer hover:opacity-75 "
+            src={locateImage(props, 2)}
+          />
+        </div>
+
+        <div className="pr-2">
+          <img
+            data-index={3}
+            onClick={handleClick}
+            className="pb-1 rounded-tr-lg cursor-pointer hover:opacity-75 "
+            src={locateImage(props, 3)}
+          />
+          <img
+            data-index={4}
+            onClick={handleClick}
+            className="pt-1 rounded-br-lg cursor-pointer hover:opacity-75"
+            src={locateImage(props, 4)}
+          />
+        </div>
+      </div>
+
+      {/* Mobile Slideshow */}
+      {/* prevents slideshow showing up when modals open */}
+      {!isOpen && (
         <div className="md:hidden relative shadow-lg">
           <Carousel
-            className="bg-current"
+            className="w-full bg-current"
             ref={carouselMobile}
+            showIndicators={false}
             showArrows={false}
             showThumbs={false}
             showStatus={false}
           >
-            {currentProject.images.map((img) => (
-              <img src={require("../../assets/images/" + img?.filename)} />
+            {props.images.map((img, i) => (
+              <img className="max-w-" src={locateImage(props, i)} />
             ))}
           </Carousel>
 
           <p className="tracking-widest m-4 rounded-lg text-sm absolute right-0 bottom-0 bg-gray-900 bg-opacity-50 px-2 py-1">
-            {currentSlideMobile + 1}/{currentProject.images.length}
+            {currentSlideMobile + 1}/{props.images.length}
           </p>
         </div>
-
-        <div className="hidden md:grid grid-cols-4 px-2">
-          {/* TODO: use background image, wrap images with skeleton loader */}
-          <img
-            data-index={0}
-            onClick={handleClick}
-            className="pr-2 h-64 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
-            src={require("../../assets/images/" +
-              currentProject.images[0]?.filename)}
-          />
-
-          <div className="grid grid-row-2 pr-2">
-            <img
-              data-index={1}
-              className="pb-1 cursor-pointer hover:opacity-75 h-32 w-full"
-              onClick={handleClick}
-              src={require("../../assets/images/" +
-                currentProject.images[1]?.filename)}
-            />
-            <img
-              data-index={2}
-              onClick={handleClick}
-              className="pt-1 cursor-pointer hover:opacity-75 h-32 w-full"
-              src={require("../../assets/images/" +
-                currentProject.images[2]?.filename)}
-            />
-          </div>
-
-          <div className="pr-2">
-            <img
-              data-index={3}
-              onClick={handleClick}
-              className="pb-1 rounded-tr-lg w-full cursor-pointer hover:opacity-75 h-32"
-              src={require("../../assets/images/" +
-                currentProject.images[3]?.filename)}
-            />
-            <img
-              data-index={4}
-              onClick={handleClick}
-              className="pt-1 rounded-br-lg w-full cursor-pointer hover:opacity-75 h-32"
-              src={require("../../assets/images/" +
-                currentProject.images[4]?.filename)}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 };

@@ -14,7 +14,7 @@
     "@types/react-modal": "^3.10.6",
     "formik": "^2.1.7",
     "graphql": "^15.3.0",
-    "pure-react-carousel": "^1.27.4",
+    "pure-react-carousel": "^1.27.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
@@ -33,7 +33,9 @@
     "build:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css",
     "generate:gql": "graphql-codegen --config codegen.yml",
     "test:react": "react-scripts test",
-    "eject:react": "react-scripts eject"
+    "eject:react": "react-scripts eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.12.0",
     "@graphql-codegen/cli": "^1.17.10",
     "@graphql-codegen/fragment-matcher": "^1.17.8",
     "@graphql-codegen/introspection": "^1.18.0",
@@ -58,9 +61,19 @@
     "@graphql-codegen/typescript-operations": "^1.17.8",
     "@graphql-codegen/typescript-react-apollo": "^2.0.7",
     "@handyman/common": "1.0.1",
+    "@storybook/addon-actions": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.26",
+    "@storybook/addon-links": "^6.0.26",
+    "@storybook/node-logger": "^6.0.26",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.26",
+    "@types/faker": "^5.1.2",
     "@types/yup": "^0.29.7",
     "autoprefixer": "9.8.6",
+    "babel-loader": "^8.1.0",
+    "faker": "^5.1.0",
     "postcss-cli": "^8.0.0",
+    "react-is": "^16.13.1",
     "tailwindcss": "^1.8.10"
   }
 }
