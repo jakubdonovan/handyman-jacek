@@ -33,13 +33,14 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
   // Saaad - Gotta rerender the component so that useRef can be called,
   // theres rendering issues when wrapping Carousel with Modal
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [time, setTime] = useState(Date.now());
   useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 500);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [setTime]);
   // Allows setecting an initialSlide
   useEffect(() => {
     try {
@@ -57,11 +58,11 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
         setPrevSlideClicked(currentSlideClicked);
       }
     } catch {}
-  });
+  }, [currentSlideClicked, prevSlideClicked]);
   return (
     <div className="flex items-center max-w-6xl">
       <Modal
-        className="outline-none bg-white text-center transition duration-500 ease-in-out translate-y-full"
+        className={`outline-none bg-white text-center animate-slideUp`}
         isOpen={isOpen}
         onRequestClose={handleClick}
         shouldCloseOnEsc
@@ -81,7 +82,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
         <div className="flex justify-between items-center">
           <div
             onClick={() => carousel.current.decrement()}
-            className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
+            className={`animate-fadeIn hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
               !currentSlide && "invisible"
             }`}
           >
@@ -97,13 +98,17 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           >
             {props.images.map((img, i) => (
               <>
-                <img className="" src={locateImage(props, i)} />
+                <img
+                  alt={props.images[i].alt}
+                  className="animate-fadeIn"
+                  src={locateImage(props, i)}
+                />
               </>
             ))}
           </Carousel>
           <div
             onClick={() => carousel.current.increment()}
-            className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
+            className={`animated-fadeIn hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
               currentSlide === props.images.length - 1 && "invisible"
             } `}
           >
@@ -117,42 +122,46 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
       <div className="hidden md:grid grid-cols-4 px-2">
         {/* TODO: use background image, wrap images with skeleton loader */}
         <img
+          alt={props.images[0].alt}
           data-index={0}
           onClick={handleClick}
-          className="pr-2 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3 hover:opacity-75 cursor-pointer"
+          className="pr-2 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3  hover:bg-gray-900 hover:bg-opacity-25 cursor-pointer"
           src={locateImage(props, 0)}
         />
 
-        <div className="grid grid-row-2 pr-2">
+        <div className="flex flex-col justify-between pr-2">
           <img
+            alt={props.images[1].alt}
             data-index={1}
-            className="pb-1 cursor-pointer hover:opacity-75 "
+            className=" h-auto cursor-pointer hover:opacity-75 "
             onClick={handleClick}
             src={locateImage(props, 1)}
           />
           <img
+            alt={props.images[2].alt}
             data-index={2}
             onClick={handleClick}
-            className="pt-1 cursor-pointer hover:opacity-75 "
+            className="h-auto cursor-pointer hover:opacity-75 "
             src={locateImage(props, 2)}
           />
         </div>
 
-        <div className="pr-2">
+        <div className="flex flex-col justify-between pr-2">
           <img
+            alt={props.images[3].alt}
             data-index={3}
             onClick={handleClick}
-            className="pb-1 rounded-tr-lg cursor-pointer hover:opacity-75 "
+            className="h-auto rounded-tr-lg cursor-pointer hover:opacity-75 "
             src={locateImage(props, 3)}
           />
           <div>
             <img
+              alt={props.images[4].alt}
               data-index={4}
               onClick={handleClick}
-              className="pt-1 rounded-br-lg cursor-pointer hover:opacity-75"
+              className="h-auto rounded-br-lg cursor-pointer hover:opacity-75"
               src={locateImage(props, 4)}
             />
-            <div className="bg-white border border-black">Show all photos</div>
           </div>
         </div>
       </div>
@@ -165,12 +174,15 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
             className="w-full bg-current"
             ref={carouselMobile}
             showIndicators={false}
-            showArrows={false}
             showThumbs={false}
             showStatus={false}
           >
             {props.images.map((img, i) => (
-              <img className="max-w-" src={locateImage(props, i)} />
+              <img
+                alt={props.images[i].alt}
+                className="max-w-"
+                src={locateImage(props, i)}
+              />
             ))}
           </Carousel>
 

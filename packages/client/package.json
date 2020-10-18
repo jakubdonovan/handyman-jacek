@@ -2,6 +2,10 @@
   "name": "@handyman/client",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "@apollo/client": "^3.2.2",
     "@testing-library/jest-dom": "^4.2.4",
@@ -25,7 +29,7 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "concurrently yarn:watch*",
+    "start": "yarn watch:react && yarn watch:css",
     "build": "concurrently yarn:build*",
     "watch:react": "yarn build:css && react-scripts start",
     "watch:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css",

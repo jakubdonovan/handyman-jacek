@@ -23202,6 +23202,26 @@ textarea {
   transition-delay: 1000ms;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -23251,6 +23271,14 @@ textarea {
 
 .animate-bounce {
   animation: bounce 1s infinite;
+}
+
+.animate-slideUp {
+  animation: slideUp 1s ease-in-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s ease-in-out;
 }
 
 @media (min-width: 640px) {
@@ -45830,6 +45858,14 @@ textarea {
 
   .sm\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .sm\:animate-slideUp {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .sm\:animate-fadeIn {
+    animation: fadeIn 0.7s ease-in-out;
   }
 }
 
@@ -68411,6 +68447,14 @@ textarea {
   .md\:animate-bounce {
     animation: bounce 1s infinite;
   }
+
+  .md\:animate-slideUp {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .md\:animate-fadeIn {
+    animation: fadeIn 0.7s ease-in-out;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -90991,6 +91035,14 @@ textarea {
   .lg\:animate-bounce {
     animation: bounce 1s infinite;
   }
+
+  .lg\:animate-slideUp {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .lg\:animate-fadeIn {
+    animation: fadeIn 0.7s ease-in-out;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -113570,5 +113622,13 @@ textarea {
 
   .xl\:animate-bounce {
     animation: bounce 1s infinite;
+  }
+
+  .xl\:animate-slideUp {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .xl\:animate-fadeIn {
+    animation: fadeIn 0.7s ease-in-out;
   }
 }

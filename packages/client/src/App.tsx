@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+// @ts-ignore
 import { PRODUCTION } from "@handyman/common";
 import React from "react";
 import "./assets/css/main.css";

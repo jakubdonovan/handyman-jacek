@@ -663,8 +663,26 @@ module.exports = {
       ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
       pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       bounce: "bounce 1s infinite",
+      slideUp: "slideUp 1s ease-in-out",
+      fadeIn: "fadeIn 0.7s ease-in-out",
     },
     keyframes: {
+      fadeIn: {
+        "0%": {
+          opacity: "100%",
+        },
+        "100%": {
+          opacity: "0%",
+        },
+      },
+      slideUp: {
+        "0%": {
+          transform: "translateY(-100%)",
+        },
+        "100%": {
+          transform: "translateY(0)",
+        },
+      },
       spin: {
         to: { transform: "rotate(360deg)" },
       },

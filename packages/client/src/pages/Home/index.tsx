@@ -25,7 +25,7 @@ export const Home: React.FC<HomeProps> = ({}) => {
 
       <div style={{ backgroundColor: "#4267B2" }} className="grid grid-rows-1">
         <div className="flex justify-center">
-          {data?.sectionMany.map((section) => {
+          {data?.sectionMany.map((section: any) => {
             return <Card {...section} />;
           })}
         </div>
