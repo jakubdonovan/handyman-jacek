@@ -9,13 +9,10 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
   const currentProject = props.projects[0] !== null && props.projects[0];
 
   return (
-    <div
-      style={{ backgroundColor: props.bgColor }}
-      className="mt-2 max-w-5xl py-8"
-    >
+    <div style={{ backgroundColor: props.bgColor }} className=" max-w-5xl py-8">
       {/* Header */}
       <h2 className="font-roboto text-center text-3xl ">{props.title}</h2>
-      <div className="mt-4 grid grid-cols-2 grid-flow grid-flow-col-dense text-center">
+      <div className="grid grid-cols-2 grid-flow grid-flow-col-dense text-center">
         <div
           className={
             showMore ? "ml-6 flex flex-col justify-center items-center" : "ml-6"
@@ -27,6 +24,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
           </p>
           {showMore && (
             <img
+              alt="5 stars"
               className="mt-4 w-8/12 md:w-4/12"
               src={require("../../assets/images/award.png")}
             />
@@ -49,7 +47,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
           >
             <p className="uppercase text-left tracking-wide text-xs">Reviews</p>
 
-            <img src={require("../../assets/images/stars.png")} />
+            <img alt="5 stars" src={require("../../assets/images/stars.png")} />
           </div>
 
           {/* Pricing */}
@@ -86,7 +84,10 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               <p className="uppercase text-center tracking-wide text-xs">
                 Reviews
               </p>
-              <img src={require("../../assets/images/stars.png")} />
+              <img
+                alt="5 stars"
+                src={require("../../assets/images/stars.png")}
+              />
             </div>
 
             <div

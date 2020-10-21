@@ -664,23 +664,26 @@ module.exports = {
       pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       bounce: "bounce 1s infinite",
       slideUp: "slideUp 1s ease-in-out",
-      fadeIn: "fadeIn 0.7s ease-in-out",
+      fadeIn: "fadeIn 2s ease-in-out",
     },
     keyframes: {
       fadeIn: {
         "0%": {
-          opacity: "100%",
+          opacity: "0",
+        },
+        "50%": {
+          opacity: "0",
         },
         "100%": {
-          opacity: "0%",
+          opacity: "1",
         },
       },
       slideUp: {
         "0%": {
-          transform: "translateY(-100%)",
+          transform: "translateY(100%)",
         },
         "100%": {
-          transform: "translateY(0)",
+          transform: "translateY(0%)",
         },
       },
       spin: {

@@ -40,17 +40,19 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
     return () => {
       clearInterval(interval);
     };
-  }, [setTime]);
+  }, [time]);
+
   // Allows setecting an initialSlide
   useEffect(() => {
     try {
+      console.log(carousel);
       // Mobile slider
       // Takes Carousel components state
       const slideM = carouselMobile.current?.state?.selectedItem;
-      typeof slideM === "number" && setCurrentSlideMobile(slideM);
+      typeof slideM == "number" && setCurrentSlideMobile(slideM);
       // Desktop Slider
       const slide = carousel.current?.state?.selectedItem;
-      typeof slide === "number" && setCurrentSlide(slide);
+      typeof slide == "number" && setCurrentSlide(slide);
 
       if (currentSlideClicked !== prevSlideClicked) {
         // Move to slide
@@ -58,11 +60,12 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
         setPrevSlideClicked(currentSlideClicked);
       }
     } catch {}
-  }, [currentSlideClicked, prevSlideClicked]);
+  }, [currentSlide, currentSlideClicked, prevSlideClicked]);
   return (
     <div className="flex items-center max-w-6xl">
       <Modal
-        className={`outline-none bg-white text-center animate-slideUp`}
+        ariaHideApp
+        className={`outline-none h-screen bg-white text-center animate-slideUp -mt-4 `}
         isOpen={isOpen}
         onRequestClose={handleClick}
         shouldCloseOnEsc
@@ -76,33 +79,32 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           <GrClose className="mr-1 text-sm font-bold" />
           Close
         </div>
-        <p className="mt-4 my-8 text-gray-700 tracking-widest m-4 rounded-lg text-lg px-2 py-1">
+        <p className="pt-6 text-gray-700 tracking-widest m-4 rounded-lg text-lg px-2 py-1">
           {currentSlide + 1}/{props.images.length}
         </p>
         <div className="flex justify-between items-center">
           <div
             onClick={() => carousel.current.decrement()}
-            className={`animate-fadeIn hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
+            className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
               !currentSlide && "invisible"
             }`}
           >
             <BiChevronLeft />
           </div>
           <Carousel
+            renderItem={(item) => (
+              <div className="bg-white w-full h-full">{item}</div>
+            )}
             showIndicators={false}
             showArrows={false}
             showStatus={false}
             showThumbs={false}
-            className="w-full max-w-3xl transition duration-200 ease-in-out translate-y-full"
+            className="w-full max-w-3xl animate-fadeIn"
             ref={carousel}
           >
             {props.images.map((img, i) => (
               <>
-                <img
-                  alt={props.images[i].alt}
-                  className="animate-fadeIn"
-                  src={locateImage(props, i)}
-                />
+                <img alt={props.images[i].alt} src={locateImage(props, i)} />
               </>
             ))}
           </Carousel>

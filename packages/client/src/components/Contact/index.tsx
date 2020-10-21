@@ -21,6 +21,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
 
       <div className="mt-5 flex justify-around">
         <img
+          alt="phone"
           onClick={() => {
             window.open("tel:/+44-7873174453");
           }}
@@ -28,13 +29,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           src={require("../../assets/images/phone-2.png")}
         />
         <img
-          onClick={() => {
-            window.open("https://wa.me/447873174453");
-          }}
-          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
-          src={require("../../assets/images/whatsapp.webp")}
-        />
-        <img
+          alt="messenger"
           onClick={() => {
             window.open(
               "https://www.facebook.com/HandymanJacek-114037603796356"
@@ -43,10 +38,18 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
           src={require("../../assets/images/messenger.png")}
         />
+        <img
+          alt="whatsapp"
+          onClick={() => {
+            window.open("https://wa.me/447873174453");
+          }}
+          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
+          src={require("../../assets/images/whatsapp.webp")}
+        />
       </div>
 
-      <h5 className="mt-2 font-roboto font-normal text-sm text-center text-gray-400">
-        *Guaranteed Response within 15 mins
+      <h5 className="mt-4 font-roboto italic font-normal text-xs text-center text-gray-400">
+        (Guaranteed Response within 15 mins)
       </h5>
 
       <div className="mt-6 grid grid-cols-3">

@@ -12,7 +12,7 @@ const generateImages = (options?: { amount: number }) => {
 
   for (let i = 0; i < amount; i++) {
     images.push({
-      filename: faker.image.abstract(),
+      filename: faker.image.nature() + Math.random(),
       alt: faker.random.words(),
       position: faker.random.number(),
     });
