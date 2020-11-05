@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "lerna run start",
+    "docker": "docker-compose up --build -d",
     "deploy": "gcloud builds submit .",
     "generate": "kompose convert"
   },
