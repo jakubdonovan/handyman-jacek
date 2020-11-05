@@ -40,10 +40,11 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
     return () => {
       clearInterval(interval);
     };
-  }, [time]);
+  }, [setTime]);
 
   // Allows setecting an initialSlide
   useEffect(() => {
+    console.log("rerendering");
     try {
       console.log(carousel);
       // Mobile slider
@@ -60,7 +61,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
         setPrevSlideClicked(currentSlideClicked);
       }
     } catch {}
-  }, [currentSlide, currentSlideClicked, prevSlideClicked]);
+  }, [time, currentSlide, currentSlideClicked, prevSlideClicked]);
   return (
     <div className="flex items-center max-w-6xl">
       <Modal
@@ -74,15 +75,15 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
         {/* Desktop Slideshow */}
         <div
           onClick={handleClick}
-          className="flex opacity-75 transition duration-200 ease-in-out transform active:scale-90 text-base cursor-pointer font-medium items-center justify-between px-4 py-1 m-4 absolute left-0 top-0 text-gray-800 bg-gray-200 rounded-lg hover:bg-gray-400"
+          className="absolute top-0 left-0 flex items-center justify-between px-4 py-1 m-4 text-base font-medium text-gray-800 transition duration-200 ease-in-out transform bg-gray-200 rounded-lg opacity-75 cursor-pointer active:scale-90 hover:bg-gray-400"
         >
           <GrClose className="mr-1 text-sm font-bold" />
           Close
         </div>
-        <p className="pt-6 text-gray-700 tracking-widest m-4 rounded-lg text-lg px-2 py-1">
+        <p className="px-2 py-1 pt-6 m-4 text-lg tracking-widest text-gray-700 rounded-lg">
           {currentSlide + 1}/{props.images.length}
         </p>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <div
             onClick={() => carousel.current.decrement()}
             className={`hover:bg-gray-100 transition duration-200 ease-in-out transform active:scale-90 cursor-pointer mx-6 border font-bold  border-gray-700 rounded-full h-12 w-12 text-gray-500 flex justify-center items-center text-xl ${
@@ -93,7 +94,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           </div>
           <Carousel
             renderItem={(item) => (
-              <div className="bg-white w-full h-full">{item}</div>
+              <div className="w-full h-full bg-white">{item}</div>
             )}
             showIndicators={false}
             showArrows={false}
@@ -121,13 +122,13 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
       </Modal>
 
       {/* Desktop gallery */}
-      <div className="hidden md:grid grid-cols-4 px-2">
+      <div className="hidden grid-cols-4 px-2 md:grid">
         {/* TODO: use background image, wrap images with skeleton loader */}
         <img
           alt={props.images[0].alt}
           data-index={0}
           onClick={handleClick}
-          className="pr-2 w-full rounded-tl-lg rounded-bl-lg col-start-1 col-end-3  hover:bg-gray-900 hover:bg-opacity-25 cursor-pointer"
+          className="w-full col-start-1 col-end-3 pr-2 rounded-tl-lg rounded-bl-lg cursor-pointer hover:bg-gray-900 hover:bg-opacity-25"
           src={locateImage(props, 0)}
         />
 
@@ -135,7 +136,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           <img
             alt={props.images[1].alt}
             data-index={1}
-            className=" h-auto cursor-pointer hover:opacity-75 "
+            className="h-auto cursor-pointer  hover:opacity-75"
             onClick={handleClick}
             src={locateImage(props, 1)}
           />
@@ -171,7 +172,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
       {/* Mobile Slideshow */}
       {/* prevents slideshow showing up when modals open */}
       {!isOpen && (
-        <div className="md:hidden relative shadow-lg">
+        <div className="relative shadow-lg md:hidden">
           <Carousel
             className="w-full bg-current"
             ref={carouselMobile}
@@ -188,7 +189,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
             ))}
           </Carousel>
 
-          <p className="tracking-widest m-4 rounded-lg text-sm absolute right-0 bottom-0 bg-gray-900 bg-opacity-50 px-2 py-1">
+          <p className="absolute bottom-0 right-0 px-2 py-1 m-4 text-sm tracking-widest bg-gray-900 bg-opacity-50 rounded-lg">
             {currentSlideMobile + 1}/{props.images.length}
           </p>
         </div>

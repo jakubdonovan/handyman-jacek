@@ -9,23 +9,22 @@ interface ContactProps {
 export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   return (
     <div
-      style={{ borderRadius: "20px" }}
-      className={"mt-2 mx-2 bg-white shadow-lg my-4" + props.className}
+      className={
+        "rounded-lg mt-2 mx-2 rounded-t-lg bg-white shadow-lg my-4" +
+        props.className
+      }
     >
-      <h2
-        style={{ borderRadius: "20px 20px 0px 0px" }}
-        className="font-inter p-2 bg-blue-500 text-sm text-white h2 text-left uppercase font-bold leading-none tracking-wide"
-      >
+      <div className="w-full p-2 text-sm font-bold leading-none tracking-wide text-left text-white uppercase bg-blue-500 rounded-t-lg font-inter h2">
         get a quote
-      </h2>
+      </div>
 
-      <div className="mt-5 flex justify-around">
+      <div className="flex justify-around mt-5">
         <img
           alt="phone"
           onClick={() => {
             window.open("tel:/+44-7873174453");
           }}
-          className="h-10 w-10 rounded-full hover:bg-opacity-75 cursor-pointer"
+          className="w-10 h-10 rounded-full cursor-pointer hover:bg-opacity-75"
           src={require("../../assets/images/phone-2.png")}
         />
         <img
@@ -35,7 +34,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               "https://www.facebook.com/HandymanJacek-114037603796356"
             );
           }}
-          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
+          className="w-10 h-10 cursor-pointer hover:bg-opacity-75"
           src={require("../../assets/images/messenger.png")}
         />
         <img
@@ -43,27 +42,27 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
           onClick={() => {
             window.open("https://wa.me/447873174453");
           }}
-          className="h-10 w-10 hover:bg-opacity-75 cursor-pointer"
+          className="w-10 h-10 cursor-pointer hover:bg-opacity-75"
           src={require("../../assets/images/whatsapp.webp")}
         />
       </div>
 
-      <h5 className="mt-4 font-roboto italic font-normal text-xs text-center text-gray-400">
+      <h5 className="mt-4 text-xs italic font-normal text-center text-gray-400 font-roboto">
         (Guaranteed Response within 15 mins)
       </h5>
 
-      <div className="mt-6 grid grid-cols-3">
-        <hr className="ml-12 -mr-6 mt-3 text-gray-500 bg-green-300" />
-        <div className="text-lg text-center text-gray-400 font-bold mx-8 ">
+      <div className="grid grid-cols-3 mt-6">
+        <hr className="mt-3 ml-12 -mr-6 text-gray-500 bg-green-300" />
+        <div className="mx-8 text-lg font-bold text-center text-gray-400 ">
           OR
         </div>
-        <hr className="-ml-6 mr-12 mt-3 text-gray-500" />
+        <hr className="mt-3 mr-12 -ml-6 text-gray-500" />
       </div>
 
       <div className="flex flex-col px-4 py-2">
         <div className="flex items-center ">
-          <FaMailBulk className="text-blue-400 mx-2" />
-          <h5 className="font-roboto text-gray-500">Send me an email</h5>
+          <FaMailBulk className="mx-2 text-blue-400" />
+          <h5 className="text-gray-500 font-roboto">Send me an email</h5>
         </div>
         <Formik
           // @ts-ignore
@@ -79,15 +78,16 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
             msg: Yup.string().required(),
           })}
         >
-          <Form className="grid grid-cols-1">
+          <Form className="grid grid-cols-1 text-gray-900">
             <Field
+              className="w-6/12 focus:outline-none"
               type="text"
               id="name"
               name="name"
-              className="w-6/12"
               placeholder="name"
             />
             <Field
+              className="focus:outline-none"
               as=""
               type="text"
               id="email"
@@ -95,13 +95,14 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               placeholder="email"
             />
             <Field
+              className="h-24 focus:outline-none"
               as="textarea"
               type="text"
               id="msg"
               name="msg"
               placeholder="msg"
             />
-            <div className="grid grid-cols-1 text-red-500 mt-5 capitalize">
+            <div className="grid grid-cols-1 mt-5 text-red-500 capitalize">
               <div>
                 <ErrorMessage name="name" />
               </div>
@@ -112,10 +113,10 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
                 <ErrorMessage name="msg" />
               </div>
             </div>
-            <div className="mt-2 flex justify-center px-12">
+            <div className="flex justify-center px-12 mt-2">
               <button
                 type="submit"
-                className="animate-bounce px-4 py-2 bg-blue-500 rounded-full shadow-md text-white font-roboto uppercase tracking-widest font-bold"
+                className="px-4 py-2 font-bold tracking-widest text-white uppercase bg-blue-500 rounded-full shadow-md animate-bounce font-roboto"
               >
                 Send
               </button>

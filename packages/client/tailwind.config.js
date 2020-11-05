@@ -817,7 +817,7 @@ module.exports = {
     transitionTimingFunction: ["responsive"],
     transitionDuration: ["responsive"],
     transitionDelay: ["responsive"],
-    animation: ["responsive"],
+    animation: ["responsive", "hover", "active"],
   },
   corePlugins: {},
   plugins: [],

@@ -23285,6 +23285,62 @@ textarea {
   animation: fadeIn 2s ease-in-out;
 }
 
+.hover\:animate-none:hover {
+  animation: none;
+}
+
+.hover\:animate-spin:hover {
+  animation: spin 1s linear infinite;
+}
+
+.hover\:animate-ping:hover {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.hover\:animate-pulse:hover {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.hover\:animate-bounce:hover {
+  animation: bounce 1s infinite;
+}
+
+.hover\:animate-slideUp:hover {
+  animation: slideUp 1s ease-in-out;
+}
+
+.hover\:animate-fadeIn:hover {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.active\:animate-none:active {
+  animation: none;
+}
+
+.active\:animate-spin:active {
+  animation: spin 1s linear infinite;
+}
+
+.active\:animate-ping:active {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.active\:animate-pulse:active {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.active\:animate-bounce:active {
+  animation: bounce 1s infinite;
+}
+
+.active\:animate-slideUp:active {
+  animation: slideUp 1s ease-in-out;
+}
+
+.active\:animate-fadeIn:active {
+  animation: fadeIn 2s ease-in-out;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -45869,6 +45925,62 @@ textarea {
   }
 
   .sm\:animate-fadeIn {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .sm\:hover\:animate-none:hover {
+    animation: none;
+  }
+
+  .sm\:hover\:animate-spin:hover {
+    animation: spin 1s linear infinite;
+  }
+
+  .sm\:hover\:animate-ping:hover {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .sm\:hover\:animate-pulse:hover {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .sm\:hover\:animate-bounce:hover {
+    animation: bounce 1s infinite;
+  }
+
+  .sm\:hover\:animate-slideUp:hover {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .sm\:hover\:animate-fadeIn:hover {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .sm\:active\:animate-none:active {
+    animation: none;
+  }
+
+  .sm\:active\:animate-spin:active {
+    animation: spin 1s linear infinite;
+  }
+
+  .sm\:active\:animate-ping:active {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .sm\:active\:animate-pulse:active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .sm\:active\:animate-bounce:active {
+    animation: bounce 1s infinite;
+  }
+
+  .sm\:active\:animate-slideUp:active {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .sm\:active\:animate-fadeIn:active {
     animation: fadeIn 2s ease-in-out;
   }
 }
@@ -68459,6 +68571,62 @@ textarea {
   .md\:animate-fadeIn {
     animation: fadeIn 2s ease-in-out;
   }
+
+  .md\:hover\:animate-none:hover {
+    animation: none;
+  }
+
+  .md\:hover\:animate-spin:hover {
+    animation: spin 1s linear infinite;
+  }
+
+  .md\:hover\:animate-ping:hover {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .md\:hover\:animate-pulse:hover {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .md\:hover\:animate-bounce:hover {
+    animation: bounce 1s infinite;
+  }
+
+  .md\:hover\:animate-slideUp:hover {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .md\:hover\:animate-fadeIn:hover {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .md\:active\:animate-none:active {
+    animation: none;
+  }
+
+  .md\:active\:animate-spin:active {
+    animation: spin 1s linear infinite;
+  }
+
+  .md\:active\:animate-ping:active {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .md\:active\:animate-pulse:active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .md\:active\:animate-bounce:active {
+    animation: bounce 1s infinite;
+  }
+
+  .md\:active\:animate-slideUp:active {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .md\:active\:animate-fadeIn:active {
+    animation: fadeIn 2s ease-in-out;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -91047,6 +91215,62 @@ textarea {
   .lg\:animate-fadeIn {
     animation: fadeIn 2s ease-in-out;
   }
+
+  .lg\:hover\:animate-none:hover {
+    animation: none;
+  }
+
+  .lg\:hover\:animate-spin:hover {
+    animation: spin 1s linear infinite;
+  }
+
+  .lg\:hover\:animate-ping:hover {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .lg\:hover\:animate-pulse:hover {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .lg\:hover\:animate-bounce:hover {
+    animation: bounce 1s infinite;
+  }
+
+  .lg\:hover\:animate-slideUp:hover {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .lg\:hover\:animate-fadeIn:hover {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .lg\:active\:animate-none:active {
+    animation: none;
+  }
+
+  .lg\:active\:animate-spin:active {
+    animation: spin 1s linear infinite;
+  }
+
+  .lg\:active\:animate-ping:active {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .lg\:active\:animate-pulse:active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .lg\:active\:animate-bounce:active {
+    animation: bounce 1s infinite;
+  }
+
+  .lg\:active\:animate-slideUp:active {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .lg\:active\:animate-fadeIn:active {
+    animation: fadeIn 2s ease-in-out;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -113633,6 +113857,62 @@ textarea {
   }
 
   .xl\:animate-fadeIn {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .xl\:hover\:animate-none:hover {
+    animation: none;
+  }
+
+  .xl\:hover\:animate-spin:hover {
+    animation: spin 1s linear infinite;
+  }
+
+  .xl\:hover\:animate-ping:hover {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .xl\:hover\:animate-pulse:hover {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .xl\:hover\:animate-bounce:hover {
+    animation: bounce 1s infinite;
+  }
+
+  .xl\:hover\:animate-slideUp:hover {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .xl\:hover\:animate-fadeIn:hover {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .xl\:active\:animate-none:active {
+    animation: none;
+  }
+
+  .xl\:active\:animate-spin:active {
+    animation: spin 1s linear infinite;
+  }
+
+  .xl\:active\:animate-ping:active {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .xl\:active\:animate-pulse:active {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .xl\:active\:animate-bounce:active {
+    animation: bounce 1s infinite;
+  }
+
+  .xl\:active\:animate-slideUp:active {
+    animation: slideUp 1s ease-in-out;
+  }
+
+  .xl\:active\:animate-fadeIn:active {
     animation: fadeIn 2s ease-in-out;
   }
 }
