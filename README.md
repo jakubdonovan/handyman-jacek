@@ -4,7 +4,7 @@ This is a simple landing page to be used for a freelancing handyman.
 
 ## Demo
 
-You can view the demo [here]("https://google.com").
+You can view the demo [here]("https://https://5d381caeab02.ngrok.io/").
 
 ## Installation
 
@@ -28,7 +28,7 @@ Then open it at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
-To deploy with gcloud please...
+Ran out of gcloud trial creds, so using docker on my local machine and ngrok (until I get some more free creds)
 
 ## User Stories
 
