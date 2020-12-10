@@ -1,2 +1,4 @@
-export const PRODUCTION = process.env.PRODUCTION === "true";
-export const DOCKER = process.env.DOCKER === "true";
+import yn from "yn";
+
+export const PRODUCTION = yn(process.env.PRODUCTION);
+export const DOCKER = yn(process.env.DOCKER);
