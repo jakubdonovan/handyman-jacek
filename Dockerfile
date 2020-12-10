@@ -1,8 +1,10 @@
 FROM node:14-alpine
 
 WORKDIR /app
+COPY package.json .
+RUN yarn
 
-WORKDIR /packages/app/common
+WORKDIR /app/packages/common
 COPY packages/common/package.json .
 RUN yarn
 COPY packages/common . 
@@ -13,11 +15,11 @@ RUN yarn
 COPY packages/client . 
 RUN yarn build
 
-WORKDIR /packages/app/server
+WORKDIR /app/packages/server
 COPY packages/server/package.json .
 RUN yarn
 COPY packages/server . 
 RUN yarn build
 
-EXPOSE 8080
+EXPOSE 5000
 CMD ["node", "./dist/index.js"]

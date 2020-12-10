@@ -32,14 +32,14 @@ export const Hero: React.FC<HeroProps> = () => {
           </h4>
 
           <div className="flex items-center gap-4 mt-4 text-sm font-bold tracking-widest text-white uppercase font-roboto">
-            <div className="p-2 whitespace-no-wrap border border-opacity-0 rounded-lg shadow-lg cursor-pointer">
+            <div className="p-2 whitespace-no-wrap duration-200 ease-in-out transform border border-opacity-0 rounded-lg shadow-lg cursor-pointer active:scale-90">
               view portfolio
             </div>
             <div
               style={{
                 background: "linear-gradient(180deg, #48BB78 0%, #2F855A 100%)",
               }}
-              className="relative p-2 whitespace-no-wrap rounded-lg cursor-pointer hover:bg-green-700"
+              className="relative p-2 whitespace-no-wrap duration-200 ease-in-out transform rounded-lg cursor-pointer hover:bg-green-700 active:scale-90"
               onClick={() => setContact(true)}
             >
               request estimate
@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = () => {
         </div>
 
         {contact ? (
-          <Contact className="" />
+          <Contact className="inline-flex justify-self-center" />
         ) : (
           <img
             className=""

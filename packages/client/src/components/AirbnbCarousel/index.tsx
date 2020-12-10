@@ -128,7 +128,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           alt={props.images[0].alt}
           data-index={0}
           onClick={handleClick}
-          className="w-full col-start-1 col-end-3 pr-2 rounded-tl-lg rounded-bl-lg cursor-pointer hover:bg-gray-900 hover:bg-opacity-25"
+          className="w-full col-start-1 col-end-3 pr-2 rounded-tl-lg rounded-bl-lg cursor-pointer hover:opacity-75"
           src={locateImage(props, 0)}
         />
 
@@ -136,7 +136,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
           <img
             alt={props.images[1].alt}
             data-index={1}
-            className="h-auto cursor-pointer  hover:opacity-75"
+            className="h-auto cursor-pointer hover:opacity-75"
             onClick={handleClick}
             src={locateImage(props, 1)}
           />

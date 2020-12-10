@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 import graphqlSchema from "./schema";
 
 export default async function startServer() {
+  const PORT = process.env.PORT || DOCKER ? 5000 : 8080;
   const app = express();
 
   await mongoose
@@ -23,9 +24,12 @@ export default async function startServer() {
   const server = new ApolloServer({ schema: graphqlSchema });
   server.applyMiddleware({ app });
 
-  app.use(express.static("../packages/client/build"));
+  // docker takes you to /server, maybe docker conditional here
+  app.use(
+    express.static(DOCKER ? "../client/build" : "../packages/client/build")
+  );
 
-  app.listen(process.env.PORT || 8080, () => {
-    console.log("Started Server");
+  app.listen(PORT, () => {
+    console.log("Started Server @ " + DOCKER);
   });
 }

@@ -6,26 +6,30 @@ interface CardProps extends SectionDataFragment {}
 
 export const Card: React.FC<CardProps> = (props: CardProps) => {
   const [showMore, setShowMore] = useState<boolean>(false);
+  // TODO:
+  // Feed projects into, project slideshow (Needs new slider component)
   const currentProject = props.projects[0] !== null && props.projects[0];
 
   return (
-    <div style={{ backgroundColor: props.bgColor }} className=" max-w-5xl py-8">
+    <div style={{ backgroundColor: props.bgColor }} className="max-w-5xl py-8 ">
       {/* Header */}
-      <h2 className="font-roboto text-center text-3xl ">{props.title}</h2>
-      <div className="grid grid-cols-2 grid-flow grid-flow-col-dense text-center">
+      <h2 className="mb-2 text-3xl text-center text-white font-roboto">
+        {props.title}
+      </h2>
+      <div className="grid grid-flow-col-dense grid-cols-2 text-center grid-flow">
         <div
           className={
             showMore ? "ml-6 flex flex-col justify-center items-center" : "ml-6"
           }
         >
           {/* Description */}
-          <p className="mt-6 w-full text-base leading-8 font-normal overflow-hidden">
+          <p className="w-full mt-6 overflow-hidden text-base font-normal leading-8">
             {showMore ? props.longDescription : props.shortDescription}
           </p>
           {showMore && (
             <img
               alt="5 stars"
-              className="mt-4 w-8/12 md:w-4/12"
+              className="w-8/12 mt-4 md:w-4/12"
               src={require("../../assets/images/award.png")}
             />
           )}
@@ -45,7 +49,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               showMore ? "hidden" : "block"
             } mt-4 m-4 items-start flex-col justify-center`}
           >
-            <p className="uppercase text-left tracking-wide text-xs">Reviews</p>
+            <p className="text-xs tracking-wide text-left uppercase">Reviews</p>
 
             <img alt="5 stars" src={require("../../assets/images/stars.png")} />
           </div>
@@ -58,17 +62,20 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               !props.amount && "font-bold text-lg"
             }`}
           >
-            {props.amount
-              ? `£ ${(
-                  <span className="text-4xl font-bold">50</span>
-                )} per room `
-              : "Get a FREE quote!"}
+            {props.amount ? (
+              <span>
+                £<span className="text-4xl font-bold">{props.amount}</span> per
+                room
+              </span>
+            ) : (
+              "Get a FREE quote!"
+            )}
           </div>
         </div>
 
         {/* Image */}
         <div
-          className="ml-12 h-64 pb-4 rounded-tl-lg rounded-bl-lg shadow-lg bg-cover lg:rounded-lg"
+          className="h-64 pb-4 ml-12 bg-cover rounded-tl-lg rounded-bl-lg shadow-lg lg:rounded-lg"
           style={{
             backgroundImage: `url(${require("../../assets/images/" +
               props.image.filename)})`,
@@ -80,8 +87,8 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
       {showMore && (
         <>
           <div className="flex justify-between">
-            <div className="mt-4 m-4 flex items-start flex-col justify-center">
-              <p className="uppercase text-center tracking-wide text-xs">
+            <div className="flex flex-col items-start justify-center m-4 mt-4">
+              <p className="text-xs tracking-wide text-center uppercase">
                 Reviews
               </p>
               <img
@@ -95,11 +102,14 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
             ${!props.amount && "text-lg font-bold"}
             `}
             >
-              {props.amount
-                ? `£ ${(
-                    <span className="text-4xl font-bold">50</span>
-                  )} per room `
-                : "Get a FREE quote!"}
+              {props.amount ? (
+                <span>
+                  £<span className="text-4xl font-bold">{props.amount}</span>{" "}
+                  per room
+                </span>
+              ) : (
+                "Get a FREE quote!"
+              )}
             </div>
           </div>
           {/* Slideshow */}
@@ -110,10 +120,10 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                 //@ts-ignore
                 <AirbnbCarousel images={currentProject.images} />
               )}
-              <div className="flex justify-between p-4 text-center tracking-widest">
+              <div className="flex justify-between p-4 tracking-widest text-center">
                 <div>
                   <h6 className="text-left">Location</h6>
-                  <p className="font-bold text-xl capitalize">
+                  <p className="text-xl font-bold capitalize">
                     {currentProject.location}
                   </p>
                 </div>
@@ -125,14 +135,14 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
                 </div>
               </div>
               <div className="text-center">
-                <h2 className="font-roboto text-lg text-yellow-500">
+                <h2 className="text-lg text-yellow-500 font-roboto">
                   {currentProject.title}
                 </h2>
-                <p className="mb-4 text-base font-thin px-6">
+                <p className="px-6 mb-4 text-base font-thin">
                   {currentProject.description}
                 </p>
               </div>
-              <div className="bg-white flex justify-between p-4">
+              <div className="flex justify-between p-4 bg-white">
                 <div>
                   <h6>project requirement</h6>
                   <p

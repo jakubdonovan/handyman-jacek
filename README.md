@@ -24,6 +24,12 @@ npm i
 npm start
 ```
 
+**with docker:**
+
+```
+yarn docker
+```
+
 Then open it at [http://localhost:3000](http://localhost:3000).
 
 ## Deployment

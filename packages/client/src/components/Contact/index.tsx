@@ -1,6 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import { FaMailBulk } from "react-icons/fa";
 import * as Yup from "yup";
 interface ContactProps {
   className: string;
@@ -10,11 +9,11 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   return (
     <div
       className={
-        "rounded-lg mt-2 mx-2 rounded-t-lg bg-white shadow-lg my-4" +
+        "rounded-lg mt-2 mx-2 rounded-t-lg shadow-2xl my-4 bg-gray-900 bg-opacity-75" +
         props.className
       }
     >
-      <div className="w-full p-2 text-sm font-bold leading-none tracking-wide text-left text-white uppercase bg-blue-500 rounded-t-lg font-inter h2">
+      <div className="w-full p-2 text-sm font-bold leading-none tracking-wide text-left text-white uppercase bg-indigo-700 rounded-t-lg font-inter h2">
         get a quote
       </div>
 
@@ -61,7 +60,6 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
 
       <div className="flex flex-col px-4 py-2">
         <div className="flex items-center ">
-          <FaMailBulk className="mx-2 text-blue-400" />
           <h5 className="text-gray-500 font-roboto">Send me an email</h5>
         </div>
         <Formik
@@ -80,14 +78,14 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
         >
           <Form className="grid grid-cols-1 text-gray-900">
             <Field
-              className="w-6/12 focus:outline-none"
+              className="w-6/12 bg-gray-800 focus:outline-none"
               type="text"
               id="name"
               name="name"
               placeholder="name"
             />
             <Field
-              className="focus:outline-none"
+              className="bg-gray-800 focus:outline-none"
               as=""
               type="text"
               id="email"
@@ -95,7 +93,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
               placeholder="email"
             />
             <Field
-              className="h-24 focus:outline-none"
+              className="h-24 bg-gray-800 focus:outline-none"
               as="textarea"
               type="text"
               id="msg"
@@ -116,7 +114,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
             <div className="flex justify-center px-12 mt-2">
               <button
                 type="submit"
-                className="px-4 py-2 font-bold tracking-widest text-white uppercase bg-blue-500 rounded-full shadow-md animate-bounce font-roboto"
+                className="px-4 py-2 font-bold tracking-widest text-white uppercase duration-200 ease-in-out transform bg-green-500 rounded-full shadow-md active:outline-none focus:outline-none animate-bounce font-roboto active:scale-90"
               >
                 Send
               </button>

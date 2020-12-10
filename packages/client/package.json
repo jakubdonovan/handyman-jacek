@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.2",
+    "@handyman/common": "1.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -31,7 +32,7 @@
   },
   "scripts": {
     "start": "yarn watch:react && yarn watch:css",
-    "build": "concurrently yarn:build*",
+    "build": "yarn build:react && yarn build:css",
     "watch:react": "yarn build:css && react-scripts start",
     "watch:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css",
     "build:react": "react-scripts build",

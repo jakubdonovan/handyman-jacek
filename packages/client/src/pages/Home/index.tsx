@@ -27,8 +27,8 @@ export const Home: React.FC<HomeProps> = () => {
         <Profile />
       </div>
 
-      <div style={{ backgroundColor: "#4267B2" }} className="grid grid-rows-1">
-        <div className="flex justify-center">
+      <div style={{ backgroundColor: "#4267B2" }} className="grid grid-cols-1">
+        <div className="flex flex-col items-center justify-center">
           {data?.sectionMany.map((section, i: number) => {
             return <Card key={i} {...section} />;
           })}
