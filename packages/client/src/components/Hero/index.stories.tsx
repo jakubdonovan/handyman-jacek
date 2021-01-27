@@ -6,4 +6,5 @@ export default {
   component: Hero,
 };
 
-export const HeroLG = () => <Hero />;
+const [contact, setContact] = React.useState(false);
+export const HeroLG = () => <Hero {...{ contact, setContact }} />;

@@ -5,9 +5,14 @@
   "author": "jakub <jakubdonovan@protonmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "lerna run start",
-    "build": "lerna run build",
-    "docker": "docker-compose up --build -d",
+    "start": "yarn start:dev",
+    "start:dev": "yarn build:env --dev --prod && lerna run start",
+    "start:docker": "yarn build:env --prod --docker  && lerna run start",
+    "start:heroku": "yarn build:env --prod --docker --heroku && lerna run start",
+    "build": "yarn build:env --prod && lerna run build",
+    "build:env": "node packages/common/src/constants.js",
+    "docker": "docker build --tag 3hxx/handyman-jacek .",
+    "docker-compose": "docker-compose up --build",
     "deploy": "gcloud builds submit .",
     "generate": "kompose convert"
   },

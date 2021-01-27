@@ -3,7 +3,7 @@ import { composeMongoose } from "graphql-compose-mongoose";
 import { SectionModel } from "../models";
 
 // Section resolvers
-const SectionTC = composeMongoose(SectionModel);
+const SectionTC = composeMongoose(SectionModel as any);
 
 schemaComposer.Query.addFields({
   sectionById: SectionTC.mongooseResolvers.findById(),

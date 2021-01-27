@@ -9,11 +9,11 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
   return (
     <div
       className={
-        "rounded-lg mt-2 mx-2 rounded-t-lg shadow-2xl my-4 bg-gray-900 bg-opacity-75" +
+        "rounded-lg mt-2 mx-2 rounded-t-lg shadow-2xl my-4 bg-gray-800 bg-opacity-75" +
         props.className
       }
     >
-      <div className="w-full p-2 text-sm font-bold leading-none tracking-wide text-left text-white uppercase bg-indigo-700 rounded-t-lg font-inter h2">
+      <div className="w-full p-4 text-sm font-bold leading-none tracking-wide text-left text-white uppercase bg-gray-700 rounded-t-lg font-inter h2">
         get a quote
       </div>
 
@@ -58,7 +58,7 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
         <hr className="mt-3 mr-12 -ml-6 text-gray-500" />
       </div>
 
-      <div className="flex flex-col px-4 py-2">
+      <div className="flex flex-col px-4 py-2 mt-4">
         <div className="flex items-center ">
           <h5 className="text-gray-500 font-roboto">Send me an email</h5>
         </div>
@@ -76,29 +76,29 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
             msg: Yup.string().required(),
           })}
         >
-          <Form className="grid grid-cols-1 text-gray-900">
+          <Form className="grid grid-cols-1 text-gray-500 ">
             <Field
-              className="w-6/12 bg-gray-800 focus:outline-none"
+              className="bg-gray-700 rounded-none shadow-md focus:outline-none"
               type="text"
               id="name"
               name="name"
-              placeholder="name"
+              placeholder="Name"
             />
             <Field
-              className="bg-gray-800 focus:outline-none"
+              className="bg-gray-700 rounded-none shadow-md focus:outline-none"
               as=""
               type="text"
               id="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
             />
             <Field
-              className="h-24 bg-gray-800 focus:outline-none"
+              className="h-24 bg-gray-700 rounded-none shadow-md focus:outline-none"
               as="textarea"
               type="text"
               id="msg"
               name="msg"
-              placeholder="msg"
+              placeholder="Message"
             />
             <div className="grid grid-cols-1 mt-5 text-red-500 capitalize">
               <div>
@@ -111,10 +111,10 @@ export const Contact: React.FC<ContactProps> = (props: ContactProps) => {
                 <ErrorMessage name="msg" />
               </div>
             </div>
-            <div className="flex justify-center px-12 mt-2">
+            <div className="flex items-center justify-center h-full px-12 mt-6">
               <button
                 type="submit"
-                className="px-4 py-2 font-bold tracking-widest text-white uppercase duration-200 ease-in-out transform bg-green-500 rounded-full shadow-md active:outline-none focus:outline-none animate-bounce font-roboto active:scale-90"
+                className="px-4 py-2 font-bold tracking-widest text-white uppercase duration-200 ease-in-out transform bg-green-500 rounded-full shadow-md active:outline-none focus:outline-none font-roboto active:scale-90"
               >
                 Send
               </button>

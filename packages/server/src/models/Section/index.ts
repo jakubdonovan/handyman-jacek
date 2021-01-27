@@ -19,6 +19,8 @@ class Section {
   public projects!: Project[];
   @prop({ required: true })
   public bgColor!: string | number;
+  @prop({ required: true })
+  public light!: boolean;
 }
 
 export default getModelForClass(Section);

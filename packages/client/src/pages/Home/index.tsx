@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card } from "../../components/Card";
 import { Hero } from "../../components/Hero";
-import { Logo } from "../../components/Logo";
 import { Profile } from "../../components/Profile";
 import { useSectionsQuery } from "../../graphql/generated";
 
@@ -10,57 +10,56 @@ interface HomeProps {}
 export const Home: React.FC<HomeProps> = () => {
   const { data } = useSectionsQuery();
 
+  const [contact, setContact] = React.useState(false);
   return (
-    <div className="bg-gray-200">
-      {/* Logo */}
-      <div className="relative hidden md:block">
-        <Logo />
-        <div
-          style={{ backgroundColor: "#384A5A" }}
-          className="flex justify-center"
-        >
-          <Hero />
-        </div>
+    <div className="relative bg-gray-900">
+      <div className="justify-center hidden md:flex">
+        <Hero setContact={setContact} contact={contact} />
       </div>
 
       <div className="md:hidden">
         <Profile />
+        <hr className="w-full" />
       </div>
 
-      <div style={{ backgroundColor: "#4267B2" }} className="grid grid-cols-1">
+      <div className="grid grid-cols-1">
         <div className="flex flex-col items-center justify-center">
           {data?.sectionMany.map((section, i: number) => {
             return <Card key={i} {...section} />;
           })}
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <div className="mt-2">
-          <h2 className="text-3xl text-gray-900">And much more...</h2>
-          <p className="text-left text-gray-600 font-inter">
-            Have a special request?{" "}
-          </p>
-        </div>
+      <div className="h-64 py-8 bg-white">
+        <div className="flex flex-col items-center justify-center ">
+          <div className="mt-2">
+            <h2 className="text-3xl text-gray-900">And much more...</h2>
+            <p className="text-left text-gray-600 font-inter">
+              Have a special request?{" "}
+            </p>
+          </div>
 
-        <div className="flex items-center justify-center w-full mt-4">
-          <button className="px-3 py-2 mx-5 text-white bg-blue-500 rounded-full shadow-lg">
-            Contact me
-          </button>
+          <div className="flex items-center justify-center w-full py-8 mt-4">
+            <button
+              onClick={() => {
+                setContact(true);
+                // eslint-disable-next-line no-restricted-globals
+                scrollTo(0, 0);
+              }}
+              className="px-3 py-2 mx-5 text-white duration-200 ease-in-out transform bg-blue-500 rounded-full shadow-lg font-roboto active:scale-90"
+            >
+              Contact me
+            </button>
 
-          <a
-            href="/images"
-            className="mx-5 text-blue-500 underline font-roboto "
-          >
-            My Portfolio
-          </a>
+            <Link
+              // eslint-disable-next-line no-restricted-globals
+              onClick={() => scrollTo(0, 0)}
+              to="/portfolio"
+              className="mx-5 text-blue-500 underline duration-200 ease-in-out transform font-roboto active:scale-90"
+            >
+              My Portfolio
+            </Link>
+          </div>
         </div>
-      </div>
-      <div
-        style={{ textShadow: "0 0 0 #a0aec0" }}
-        className="mt-4 text-xs font-normal text-center text-transparent font-inter"
-      >
-        Made with <span aria-label="heart emoji">❤</span>️ by{" "}
-        <span className="text-blue-500">Jakub</span> in Glenroths.
       </div>
     </div>
   );

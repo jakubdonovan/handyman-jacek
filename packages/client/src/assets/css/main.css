@@ -19778,11 +19778,13 @@ textarea {
 }
 
 .break-normal {
+  word-wrap: normal;
   overflow-wrap: normal;
   word-break: normal;
 }
 
 .break-words {
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
@@ -42476,11 +42478,13 @@ textarea {
   }
 
   .sm\:break-normal {
+    word-wrap: normal;
     overflow-wrap: normal;
     word-break: normal;
   }
 
   .sm\:break-words {
+    word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
@@ -65120,11 +65124,13 @@ textarea {
   }
 
   .md\:break-normal {
+    word-wrap: normal;
     overflow-wrap: normal;
     word-break: normal;
   }
 
   .md\:break-words {
+    word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
@@ -87764,11 +87770,13 @@ textarea {
   }
 
   .lg\:break-normal {
+    word-wrap: normal;
     overflow-wrap: normal;
     word-break: normal;
   }
 
   .lg\:break-words {
+    word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
@@ -110408,11 +110416,13 @@ textarea {
   }
 
   .xl\:break-normal {
+    word-wrap: normal;
     overflow-wrap: normal;
     word-break: normal;
   }
 
   .xl\:break-words {
+    word-wrap: break-word;
     overflow-wrap: break-word;
   }
 

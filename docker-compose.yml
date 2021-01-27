@@ -7,7 +7,6 @@ services:
     links:
       - mongo
   mongo:
-    # image: launcher.gcr.io/google/mongodb3
     image: mongo
     ports:
       - "27017:27017"

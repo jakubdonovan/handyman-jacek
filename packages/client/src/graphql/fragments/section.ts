@@ -8,6 +8,7 @@ export const SECTION_DATA_FRAGMENT = gql`
     amount
     position
     bgColor
+    light
     image {
       filename
       alt

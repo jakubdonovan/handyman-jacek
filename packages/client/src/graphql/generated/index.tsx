@@ -2,6 +2,8 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -138,6 +140,7 @@ export type Section = {
   image: SectionImage;
   projects: Array<Maybe<SectionProjects>>;
   bgColor: Scalars['JSON'];
+  light: Scalars['Boolean'];
   _id: Scalars['MongoID'];
 };
 
@@ -184,6 +187,7 @@ export type FilterFindOneSectionInput = {
   image?: Maybe<FilterFindOneSectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterFindOneSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterFindOneSectionOperatorsInput>;
@@ -246,6 +250,7 @@ export type FilterFindManySectionInput = {
   image?: Maybe<FilterFindManySectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterFindManySectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterFindManySectionOperatorsInput>;
@@ -308,6 +313,7 @@ export type FilterCountSectionInput = {
   image?: Maybe<FilterCountSectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterCountSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterCountSectionOperatorsInput>;
@@ -504,6 +510,7 @@ export type CreateOneSectionInput = {
   image: SectionImageInput;
   projects: Array<Maybe<SectionProjectsInput>>;
   bgColor: Scalars['JSON'];
+  light: Scalars['Boolean'];
 };
 
 export type SectionImageInput = {
@@ -552,6 +559,7 @@ export type CreateManySectionInput = {
   image: SectionImageInput;
   projects: Array<Maybe<SectionProjectsInput>>;
   bgColor: Scalars['JSON'];
+  light: Scalars['Boolean'];
 };
 
 export type UpdateByIdSectionPayload = {
@@ -573,6 +581,7 @@ export type UpdateByIdSectionInput = {
   image?: Maybe<UpdateByIdSectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateByIdSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
 };
 
 export type UpdateByIdSectionImageInput = {
@@ -619,6 +628,7 @@ export type UpdateOneSectionInput = {
   image?: Maybe<UpdateOneSectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateOneSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
 };
 
 export type UpdateOneSectionImageInput = {
@@ -655,6 +665,7 @@ export type FilterUpdateOneSectionInput = {
   image?: Maybe<FilterUpdateOneSectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterUpdateOneSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterUpdateOneSectionOperatorsInput>;
@@ -725,6 +736,7 @@ export type UpdateManySectionInput = {
   image?: Maybe<UpdateManySectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateManySectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
 };
 
 export type UpdateManySectionImageInput = {
@@ -761,6 +773,7 @@ export type FilterUpdateManySectionInput = {
   image?: Maybe<FilterUpdateManySectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterUpdateManySectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterUpdateManySectionOperatorsInput>;
@@ -843,6 +856,7 @@ export type FilterRemoveOneSectionInput = {
   image?: Maybe<FilterRemoveOneSectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterRemoveOneSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterRemoveOneSectionOperatorsInput>;
@@ -913,6 +927,7 @@ export type FilterRemoveManySectionInput = {
   image?: Maybe<FilterRemoveManySectionImageInput>;
   projects?: Maybe<Array<Maybe<FilterRemoveManySectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
+  light?: Maybe<Scalars['Boolean']>;
   _id?: Maybe<Scalars['MongoID']>;
   /** List of *indexed* fields that can be filtered via operators. */
   _operators?: Maybe<FilterRemoveManySectionOperatorsInput>;
@@ -972,7 +987,7 @@ export type ProjectDataFragment = (
 
 export type SectionDataFragment = (
   { __typename?: 'Section' }
-  & Pick<Section, 'title' | 'shortDescription' | 'longDescription' | 'amount' | 'position' | 'bgColor'>
+  & Pick<Section, 'title' | 'shortDescription' | 'longDescription' | 'amount' | 'position' | 'bgColor' | 'light'>
   & { image: (
     { __typename?: 'SectionImage' }
     & Pick<SectionImage, 'filename' | 'alt' | 'position'>
@@ -1016,6 +1031,7 @@ export const SectionDataFragmentDoc = gql`
   amount
   position
   bgColor
+  light
   image {
     filename
     alt

@@ -1,19 +1,19 @@
-// Why is this showing as a compliation error when barreling?
-// src/server.ts:1:28 - error TS2306:
-// File 'C:/Users/User/projects/ci/1/handyman-jacek/node_modules/@handyman/common/src/index.ts'
-// is not a module.
-import { DOCKER } from "@handyman/common";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import mongoose from "mongoose";
 import graphqlSchema from "./schema";
+import path from "path";
+import cors from "cors";
 
 export default async function startServer() {
-  const PORT = process.env.PORT || DOCKER ? 5000 : 8080;
+  console.log(`db url is ${process.env.MONGO_URL}`);
+  const PORT = process.env.PORT;
   const app = express();
+  const x = path.join(`${__dirname}\\..\\..\\client\\build\\index.html`);
+  app.use(cors());
 
   await mongoose
-    .connect(`mongodb://${DOCKER ? "mongo" : "localhost"}:27017/handyman`, {
+    .connect(process.env.MONGO_URL || "mongodb://localhost:27017/handyman", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
@@ -24,12 +24,14 @@ export default async function startServer() {
   const server = new ApolloServer({ schema: graphqlSchema });
   server.applyMiddleware({ app });
 
-  // docker takes you to /server, maybe docker conditional here
-  app.use(
-    express.static(DOCKER ? "../client/build" : "../packages/client/build")
-  );
+  // Serve HTML File
+  app.use(express.static("../client/build"));
+
+  // app.get("*", (req, res) => {
+  //   res.sendFile(x);
+  // });
 
   app.listen(PORT, () => {
-    console.log("Started Server @ " + DOCKER);
+    console.log(`Started Server @ ${PORT}`);
   });
 }
