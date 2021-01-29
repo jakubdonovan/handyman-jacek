@@ -5,10 +5,12 @@ import { Home } from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Portfolio } from "./pages/Portfolio";
 import { Logo } from "./components/Logo";
+// @ts-ignore
+import { PRODUCTION } from "@handyman/common";
 
 function App() {
   const client = new ApolloClient({
-    uri: "/graphql",
+    uri: PRODUCTION ? "/graphql" : "http://localhost:8080/graphql",
     cache: new InMemoryCache(),
   });
 

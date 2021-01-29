@@ -16,9 +16,9 @@ export default async function startServer() {
   const app = express();
   const x = path.join(`${__dirname}\\..\\..\\client\\build\\index.html`);
   app.use(cors());
-  app.use(helmet({ contentSecurityPolicy: false }));
 
   if (process.env.NODE_ENV === "production") {
+    app.use(helmet({ contentSecurityPolicy: false }));
     app.use("/*", httpsRedirect());
 
     app.use(
