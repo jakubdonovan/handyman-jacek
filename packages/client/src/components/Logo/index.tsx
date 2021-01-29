@@ -1,5 +1,5 @@
 import React from "react";
-import { FaMailBulk, FaPhone } from "react-icons/fa";
+// import { FaMailBulk, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 interface LogoProps {}
 

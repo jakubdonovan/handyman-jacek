@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = (props) => {
             For quality paintwork at great pricing. come and give us a ring!
           </h4>
 
-          <div className="flex items-center gap-4 mt-12 text-sm font-bold tracking-widest text-white uppercase font-roboto">
+          <div className="flex items-center mt-12 space-x-4 text-sm font-bold tracking-widest text-white uppercase font-roboto">
             <div className="p-2 whitespace-no-wrap duration-200 ease-in-out transform border border-opacity-0 rounded-lg shadow-lg cursor-pointer active:scale-90">
               <Link to="/portfolio">view portfolio</Link>
             </div>
