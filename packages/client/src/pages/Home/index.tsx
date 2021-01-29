@@ -38,7 +38,7 @@ export const Home: React.FC<HomeProps> = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center w-full py-8 mt-4">
+          <div className="flex items-center justify-center w-full py-8 mt-12">
             <button
               onClick={() => {
                 setContact(true);
