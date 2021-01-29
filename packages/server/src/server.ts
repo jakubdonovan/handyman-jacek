@@ -4,6 +4,11 @@ import mongoose from "mongoose";
 import graphqlSchema from "./schema";
 import path from "path";
 import cors from "cors";
+import helmet from "helmet";
+// @ts-ignore
+import rateLimit from "express-rate-limit";
+// @ts-ignore
+import httpsRedirect from "express-https-redirect";
 
 export default async function startServer() {
   console.log(`db url is ${process.env.MONGO_URL}`);
@@ -11,6 +16,18 @@ export default async function startServer() {
   const app = express();
   const x = path.join(`${__dirname}\\..\\..\\client\\build\\index.html`);
   app.use(cors());
+  app.use(helmet());
+
+  if (process.env.NODE_ENV === "production") {
+    app.use("/*", httpsRedirect());
+
+    app.use(
+      rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        max: 100, // limit each IP to 100 requests per windowMs
+      })
+    );
+  }
 
   await mongoose
     .connect(process.env.MONGO_URL || "mongodb://localhost:27017/handyman", {
