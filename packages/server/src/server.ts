@@ -16,10 +16,21 @@ export default async function startServer() {
   const app = express();
   const x = path.join(`${__dirname}\\..\\..\\client\\build\\index.html`);
   app.use(cors());
-  app.use(helmet());
+  app.use(helmet({ contentSecurityPolicy: false }));
 
   if (process.env.NODE_ENV === "production") {
     app.use("/*", httpsRedirect());
+
+    app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'", "handymanjacek.com"],
+          objectSrc: ["'none'"],
+          upgradeInsecureRequests: [],
+        },
+      })
+    );
 
     app.use(
       rateLimit({

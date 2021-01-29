@@ -4,37 +4,36 @@ This is a simple landing page to be used for a freelancing handyman.
 
 ## Demo
 
-You can view the demo [here]("https://https://5d381caeab02.ngrok.io/").
+You can view the demo [here]("https://handymanjacek.com").
 
 ## Installation
 
 Starting the project in development mode locally.
 
-**with yarn**:
+**with yarn (hot reloading)**:
 
 ```
 yarn
 yarn start
 ```
 
-**with npm:**
+Then open it at [http://localhost:3000](http://localhost:3000).
 
-```
-npm i
-npm start
-```
-
-**with docker:**
+**with docker (builds):**
 
 ```
 yarn docker
 ```
 
-Then open it at [http://localhost:3000](http://localhost:3000).
+Then open it at [http://localhost:5000](http://localhost:5000).
 
 ## Deployment
 
-Ran out of gcloud trial creds, so using docker on my local machine and ngrok (until I get some more free creds)
+** Push to the new commits to dokku **
+
+```
+git push dokku master
+```
 
 ## User Stories
 
@@ -64,8 +63,6 @@ Ran out of gcloud trial creds, so using docker on my local machine and ngrok (un
 * Express
   > Api's with much less boilerplate, easily implement middleware
 * GraphQL
-
-  > Solves the n+1 problem with api's
 
   - apollo-server-express
     > Easily start a gql server
