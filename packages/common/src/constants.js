@@ -7,6 +7,10 @@ if (require.main === module) {
   var fs = require("fs");
 
   function buildEnv() {
+    fs.truncate(`${__dirname}/../.env`, 0, () => {
+      console.debug("Removing .env file contents");
+    });
+
     addArgstoEnv("dev");
     addArgstoEnv("prod");
     addArgstoEnv("docker");
