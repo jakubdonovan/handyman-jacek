@@ -49,7 +49,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
               onClick={() => setShowMore(!showMore)}
               className={`${
                 showMore ? "hidden" : "block"
-              } mt-2 font-roboto text-gray-700 text-xs text-center opacity-50 cursor-pointer uppercase`}
+              } mt-2 font-roboto ${textColor} text-xs text-center opacity-50 cursor-pointer uppercase`}
             >
               Show More
             </div>
