@@ -51,6 +51,58 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
             £<span className="text-4xl">500</span> PER ROOM
           </p>
         </div>
+        {/* Slideshow */}
+        <h2 className="p-4 mt-24">My portfolio</h2>
+        {currentProject && (
+          <>
+            {currentProject.images.length > 4 && (
+              //@ts-ignore
+              <AirbnbCarousel images={currentProject.images} />
+            )}
+            <div className="flex justify-between p-4 tracking-widest text-center">
+              <div>
+                <h6 className="text-left">Location</h6>
+                <p className="text-xl font-bold capitalize">
+                  {currentProject.location}
+                </p>
+              </div>
+              <div>
+                <h6 className="text-left">we charged</h6>
+                <p className="text-sm font-bold">
+                  £<span className="text-2xl">{currentProject.amount}</span>
+                </p>
+              </div>
+            </div>
+            <div className="text-center">
+              <h2 className="text-lg text-yellow-500 font-roboto">
+                {currentProject.title}
+              </h2>
+              <p className="px-6 mb-4 text-base font-thin">
+                {currentProject.description}
+              </p>
+            </div>
+            <div className="flex justify-between p-4 bg-white">
+              <div>
+                <h6>project requirement</h6>
+                <p
+                  className="text-xl font-bold"
+                  style={{ color: props.bgColor }}
+                >
+                  {currentProject.requirement}
+                </p>
+              </div>
+              <div>
+                <h6>total sqft</h6>
+                <p
+                  className="text-xl font-bold"
+                  style={{ color: props.bgColor }}
+                >
+                  {currentProject.sqft} <span className="text-base">sqft</span>
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ interface AirbnbCarouselProps {
 const locateImage = (props: any, i: number) =>
   props.images[i].filename.startsWith("http")
     ? props.images[i].filename
-    : require("../../assets/images/" + props.images[i]?.filename);
+    : require("../../assets/images/" + props.images[i]?.filename).default;
 
 export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
   props: AirbnbCarouselProps
@@ -44,7 +44,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
 
   // Allows setecting an initialSlide
   useEffect(() => {
-    console.log("rerendering");
+    console.debug("rerendering");
     try {
       console.log(carousel);
       // Mobile slider
