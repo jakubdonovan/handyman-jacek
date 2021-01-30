@@ -10,7 +10,7 @@ class Section {
   @prop({ required: true })
   public longDescription!: string;
   @prop({ required: true })
-  public icon!: string;
+  public icon!: Image;
   @prop({ required: true })
   public amount!: number;
   @prop({ required: true })
