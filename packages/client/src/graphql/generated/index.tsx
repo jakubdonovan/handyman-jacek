@@ -135,6 +135,7 @@ export type Section = {
   title: Scalars['String'];
   shortDescription: Scalars['String'];
   longDescription: Scalars['String'];
+  icon: SectionIcon;
   amount: Scalars['Float'];
   position: Scalars['Float'];
   image: SectionImage;
@@ -144,6 +145,15 @@ export type Section = {
   _id: Scalars['MongoID'];
 };
 
+export type SectionIcon = {
+  __typename?: 'SectionIcon';
+  filename: Scalars['String'];
+  alt: Scalars['String'];
+  position: Scalars['Float'];
+  _id?: Maybe<Scalars['MongoID']>;
+};
+
+
 export type SectionImage = {
   __typename?: 'SectionImage';
   filename: Scalars['String'];
@@ -151,7 +161,6 @@ export type SectionImage = {
   position: Scalars['Float'];
   _id?: Maybe<Scalars['MongoID']>;
 };
-
 
 export type SectionProjects = {
   __typename?: 'SectionProjects';
@@ -182,6 +191,7 @@ export type FilterFindOneSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterFindOneSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterFindOneSectionImageInput>;
@@ -193,6 +203,13 @@ export type FilterFindOneSectionInput = {
   _operators?: Maybe<FilterFindOneSectionOperatorsInput>;
   OR?: Maybe<Array<FilterFindOneSectionInput>>;
   AND?: Maybe<Array<FilterFindOneSectionInput>>;
+};
+
+export type FilterFindOneSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterFindOneSectionImageInput = {
@@ -245,6 +262,7 @@ export type FilterFindManySectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterFindManySectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterFindManySectionImageInput>;
@@ -256,6 +274,13 @@ export type FilterFindManySectionInput = {
   _operators?: Maybe<FilterFindManySectionOperatorsInput>;
   OR?: Maybe<Array<FilterFindManySectionInput>>;
   AND?: Maybe<Array<FilterFindManySectionInput>>;
+};
+
+export type FilterFindManySectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterFindManySectionImageInput = {
@@ -308,6 +333,7 @@ export type FilterCountSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterCountSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterCountSectionImageInput>;
@@ -319,6 +345,13 @@ export type FilterCountSectionInput = {
   _operators?: Maybe<FilterCountSectionOperatorsInput>;
   OR?: Maybe<Array<FilterCountSectionInput>>;
   AND?: Maybe<Array<FilterCountSectionInput>>;
+};
+
+export type FilterCountSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterCountSectionImageInput = {
@@ -439,6 +472,8 @@ export type Mutation = {
   sectionRemoveOne?: Maybe<RemoveOneSectionPayload>;
   /** Remove many documents without returning them: Use Query.remove mongoose method. Do not apply mongoose defaults, setters, hooks and validation.  */
   sectionRemoveMany?: Maybe<RemoveManySectionPayload>;
+  /** Update one document: 1) Retrieve one document by findById. 2) Apply updates to mongoose document. 3) Mongoose applies defaults, setters, hooks and validation. 4) And save it. */
+  imageUpdateById?: Maybe<UpdateByIdImagePayload>;
 };
 
 
@@ -491,6 +526,12 @@ export type MutationSectionRemoveManyArgs = {
   limit?: Maybe<Scalars['Int']>;
 };
 
+
+export type MutationImageUpdateByIdArgs = {
+  _id: Scalars['MongoID'];
+  record: UpdateByIdImageInput;
+};
+
 export type CreateOneSectionPayload = {
   __typename?: 'CreateOneSectionPayload';
   /** Document ID */
@@ -505,12 +546,20 @@ export type CreateOneSectionInput = {
   title: Scalars['String'];
   shortDescription: Scalars['String'];
   longDescription: Scalars['String'];
+  icon: SectionIconInput;
   amount: Scalars['Float'];
   position: Scalars['Float'];
   image: SectionImageInput;
   projects: Array<Maybe<SectionProjectsInput>>;
   bgColor: Scalars['JSON'];
   light: Scalars['Boolean'];
+};
+
+export type SectionIconInput = {
+  filename: Scalars['String'];
+  alt: Scalars['String'];
+  position: Scalars['Float'];
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type SectionImageInput = {
@@ -554,6 +603,7 @@ export type CreateManySectionInput = {
   title: Scalars['String'];
   shortDescription: Scalars['String'];
   longDescription: Scalars['String'];
+  icon: SectionIconInput;
   amount: Scalars['Float'];
   position: Scalars['Float'];
   image: SectionImageInput;
@@ -576,12 +626,20 @@ export type UpdateByIdSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<UpdateByIdSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<UpdateByIdSectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateByIdSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
   light?: Maybe<Scalars['Boolean']>;
+};
+
+export type UpdateByIdSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type UpdateByIdSectionImageInput = {
@@ -623,12 +681,20 @@ export type UpdateOneSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<UpdateOneSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<UpdateOneSectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateOneSectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
   light?: Maybe<Scalars['Boolean']>;
+};
+
+export type UpdateOneSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type UpdateOneSectionImageInput = {
@@ -660,6 +726,7 @@ export type FilterUpdateOneSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterUpdateOneSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterUpdateOneSectionImageInput>;
@@ -671,6 +738,13 @@ export type FilterUpdateOneSectionInput = {
   _operators?: Maybe<FilterUpdateOneSectionOperatorsInput>;
   OR?: Maybe<Array<FilterUpdateOneSectionInput>>;
   AND?: Maybe<Array<FilterUpdateOneSectionInput>>;
+};
+
+export type FilterUpdateOneSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterUpdateOneSectionImageInput = {
@@ -731,12 +805,20 @@ export type UpdateManySectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<UpdateManySectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<UpdateManySectionImageInput>;
   projects?: Maybe<Array<Maybe<UpdateManySectionProjectsInput>>>;
   bgColor?: Maybe<Scalars['JSON']>;
   light?: Maybe<Scalars['Boolean']>;
+};
+
+export type UpdateManySectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type UpdateManySectionImageInput = {
@@ -768,6 +850,7 @@ export type FilterUpdateManySectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterUpdateManySectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterUpdateManySectionImageInput>;
@@ -779,6 +862,13 @@ export type FilterUpdateManySectionInput = {
   _operators?: Maybe<FilterUpdateManySectionOperatorsInput>;
   OR?: Maybe<Array<FilterUpdateManySectionInput>>;
   AND?: Maybe<Array<FilterUpdateManySectionInput>>;
+};
+
+export type FilterUpdateManySectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterUpdateManySectionImageInput = {
@@ -851,6 +941,7 @@ export type FilterRemoveOneSectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterRemoveOneSectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterRemoveOneSectionImageInput>;
@@ -862,6 +953,13 @@ export type FilterRemoveOneSectionInput = {
   _operators?: Maybe<FilterRemoveOneSectionOperatorsInput>;
   OR?: Maybe<Array<FilterRemoveOneSectionInput>>;
   AND?: Maybe<Array<FilterRemoveOneSectionInput>>;
+};
+
+export type FilterRemoveOneSectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterRemoveOneSectionImageInput = {
@@ -922,6 +1020,7 @@ export type FilterRemoveManySectionInput = {
   title?: Maybe<Scalars['String']>;
   shortDescription?: Maybe<Scalars['String']>;
   longDescription?: Maybe<Scalars['String']>;
+  icon?: Maybe<FilterRemoveManySectionIconInput>;
   amount?: Maybe<Scalars['Float']>;
   position?: Maybe<Scalars['Float']>;
   image?: Maybe<FilterRemoveManySectionImageInput>;
@@ -933,6 +1032,13 @@ export type FilterRemoveManySectionInput = {
   _operators?: Maybe<FilterRemoveManySectionOperatorsInput>;
   OR?: Maybe<Array<FilterRemoveManySectionInput>>;
   AND?: Maybe<Array<FilterRemoveManySectionInput>>;
+};
+
+export type FilterRemoveManySectionIconInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+  _id?: Maybe<Scalars['MongoID']>;
 };
 
 export type FilterRemoveManySectionImageInput = {
@@ -976,6 +1082,30 @@ export type FilterRemoveManySection_IdOperatorsInput = {
   exists?: Maybe<Scalars['Boolean']>;
 };
 
+export type UpdateByIdImagePayload = {
+  __typename?: 'UpdateByIdImagePayload';
+  /** Document ID */
+  recordId?: Maybe<Scalars['MongoID']>;
+  /** Updated document */
+  record?: Maybe<Image>;
+  /** Error that may occur during operation. If you request this field in GraphQL query, you will receive typed error in payload; otherwise error will be provided in root `errors` field of GraphQL response. */
+  error?: Maybe<ErrorInterface>;
+};
+
+export type Image = {
+  __typename?: 'Image';
+  filename: Scalars['String'];
+  alt: Scalars['String'];
+  position: Scalars['Float'];
+  _id: Scalars['MongoID'];
+};
+
+export type UpdateByIdImageInput = {
+  filename?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+  position?: Maybe<Scalars['Float']>;
+};
+
 export type ProjectDataFragment = (
   { __typename?: 'SectionProjects' }
   & Pick<SectionProjects, 'title' | 'description' | 'location' | 'amount' | 'requirement' | 'sqft'>
@@ -988,7 +1118,10 @@ export type ProjectDataFragment = (
 export type SectionDataFragment = (
   { __typename?: 'Section' }
   & Pick<Section, 'title' | 'shortDescription' | 'longDescription' | 'amount' | 'position' | 'bgColor' | 'light'>
-  & { image: (
+  & { icon: (
+    { __typename?: 'SectionIcon' }
+    & Pick<SectionIcon, 'filename' | 'alt' | 'position'>
+  ), image: (
     { __typename?: 'SectionImage' }
     & Pick<SectionImage, 'filename' | 'alt' | 'position'>
   ), projects: Array<Maybe<(
@@ -1032,6 +1165,11 @@ export const SectionDataFragmentDoc = gql`
   position
   bgColor
   light
+  icon {
+    filename
+    alt
+    position
+  }
   image {
     filename
     alt

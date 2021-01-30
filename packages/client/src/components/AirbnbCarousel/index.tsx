@@ -63,7 +63,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
     } catch {}
   }, [time, currentSlide, currentSlideClicked, prevSlideClicked]);
   return (
-    <div className="flex items-center max-w-6xl">
+    <div className="flex items-center">
       <Modal
         ariaHideApp
         className={`outline-none h-screen bg-white text-center animate-slideUp -mt-4 `}
@@ -122,7 +122,7 @@ export const AirbnbCarousel: React.FC<AirbnbCarouselProps> = (
       </Modal>
 
       {/* Desktop gallery */}
-      <div className="hidden grid-cols-4 px-2 md:grid">
+      <div className="hidden w-full grid-cols-4 px-2 md:grid">
         {/* TODO: use background image, wrap images with skeleton loader */}
         <img
           alt={props.images[0].alt}

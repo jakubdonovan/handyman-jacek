@@ -9,6 +9,11 @@ export const SECTION_DATA_FRAGMENT = gql`
     position
     bgColor
     light
+    icon {
+      filename
+      alt
+      position
+    }
     image {
       filename
       alt
