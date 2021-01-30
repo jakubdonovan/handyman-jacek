@@ -58,7 +58,7 @@ export const Hero: React.FC<HeroProps> = (props) => {
           <img
             className=""
             alt="b"
-            src={require("../../assets/images/uncle-5.png")}
+            src={require("../../assets/images/uncle-5.png").default}
           />
         )}
       </div>

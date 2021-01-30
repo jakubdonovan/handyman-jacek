@@ -27,7 +27,7 @@ export const Testimonial: React.FC<TestimonialProps> = (props) => {
       <div className="flex items-center justify-center">
         <img
           alt={props.name}
-          src={require("../../assets/images/" + props.photo)}
+          src={require("../../assets/images/" + props.photo).default}
           className="w-20 rounded-full"
         />
       </div>
