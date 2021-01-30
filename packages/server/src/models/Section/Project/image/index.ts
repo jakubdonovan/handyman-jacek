@@ -1,4 +1,4 @@
-import { prop } from "@typegoose/typegoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
 
 export class Image {
   @prop({ required: true })
@@ -8,3 +8,6 @@ export class Image {
   @prop({ required: true })
   public position?: number;
 }
+
+const ImageModel = getModelForClass(Image);
+export default ImageModel;

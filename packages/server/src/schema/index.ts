@@ -1,9 +1,11 @@
 import { schemaComposer } from "graphql-compose";
 import { composeMongoose } from "graphql-compose-mongoose";
 import { SectionModel } from "../models";
+import ImageModel from "../models/Section/Project/image";
 
 // Section resolvers
 const SectionTC = composeMongoose(SectionModel as any);
+const ImageTC = composeMongoose(ImageModel);
 
 schemaComposer.Query.addFields({
   sectionById: SectionTC.mongooseResolvers.findById(),
@@ -26,6 +28,10 @@ schemaComposer.Mutation.addFields({
   sectionRemoveById: SectionTC.mongooseResolvers.removeById(),
   sectionRemoveOne: SectionTC.mongooseResolvers.removeOne(),
   sectionRemoveMany: SectionTC.mongooseResolvers.removeMany(),
+});
+
+schemaComposer.Mutation.addFields({
+  imageUpdateById: ImageTC.mongooseResolvers.updateById(),
 });
 
 const graphqlSchema = schemaComposer.buildSchema();
