@@ -12737,6 +12737,14 @@ textarea {
   clear: none;
 }
 
+.font-proxima {
+  font-family: Proxima Nova;
+}
+
+.font-leckerli {
+  font-family: Leckerli One;
+}
+
 .font-roboto {
   font-family: Roboto;
 }
@@ -35437,6 +35445,14 @@ textarea {
     clear: none;
   }
 
+  .sm\:font-proxima {
+    font-family: Proxima Nova;
+  }
+
+  .sm\:font-leckerli {
+    font-family: Leckerli One;
+  }
+
   .sm\:font-roboto {
     font-family: Roboto;
   }
@@ -58081,6 +58097,14 @@ textarea {
 
   .md\:clear-none {
     clear: none;
+  }
+
+  .md\:font-proxima {
+    font-family: Proxima Nova;
+  }
+
+  .md\:font-leckerli {
+    font-family: Leckerli One;
   }
 
   .md\:font-roboto {
@@ -80729,6 +80753,14 @@ textarea {
     clear: none;
   }
 
+  .lg\:font-proxima {
+    font-family: Proxima Nova;
+  }
+
+  .lg\:font-leckerli {
+    font-family: Leckerli One;
+  }
+
   .lg\:font-roboto {
     font-family: Roboto;
   }
@@ -103373,6 +103405,14 @@ textarea {
 
   .xl\:clear-none {
     clear: none;
+  }
+
+  .xl\:font-proxima {
+    font-family: Proxima Nova;
+  }
+
+  .xl\:font-leckerli {
+    font-family: Leckerli One;
   }
 
   .xl\:font-roboto {

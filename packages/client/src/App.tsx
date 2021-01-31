@@ -6,13 +6,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Portfolio } from "./pages/Portfolio";
 import { Logo } from "./components/Logo";
 // @ts-ignore
-import { PRODUCTION } from "@handyman/common";
+// import { PRODUCTION } from "@handyman/common";
 
 function App() {
   const client = new ApolloClient({
-    uri: PRODUCTION ? "/graphql" : "http://localhost:8080/graphql",
+    uri: "/graphql",
     cache: new InMemoryCache(),
   });
+
+  // const apiRegex = /^\/graphql\/.*/;
+  // if (apiRegex.test(window.location.pathname)) {
+  //   return <div />;
+  // }
 
   return (
     <ApolloProvider client={client}>
@@ -22,7 +27,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/portfolio">
+          <Route exact path="/portfolio">
             <Portfolio />
           </Route>
         </Switch>

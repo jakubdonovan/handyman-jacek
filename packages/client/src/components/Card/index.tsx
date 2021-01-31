@@ -18,7 +18,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
   return (
     <div
       style={{ backgroundColor: props.bgColor }}
-      className="flex justify-center w-full px-8 py-20 md:px-12"
+      className="flex justify-center w-full px-8 py-20 overflow-hidden md:px-12"
     >
       <div className="max-w-5xl">
         <div className="items-end justify-between md:flex">

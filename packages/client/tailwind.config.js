@@ -256,6 +256,8 @@ module.exports = {
       default: "1",
     },
     fontFamily: {
+      proxima: ["Proxima Nova"],
+      leckerli: ["Leckerli One"],
       roboto: ["Roboto"],
       inter: ["Inter"],
       sans: [

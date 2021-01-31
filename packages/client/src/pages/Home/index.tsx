@@ -10,22 +10,29 @@ interface HomeProps {}
 export const Home: React.FC<HomeProps> = () => {
   const { data } = useSectionsQuery();
 
+  const sections = data?.sectionMany;
+  const sortedSections = sortPositions(sections);
+
+  function sortPositions(data: any) {
+    console.log(data);
+    return data && [...data].sort((a: any, b: any) => a.position - b.position);
+  }
+
   const [contact, setContact] = React.useState(false);
   return (
     <div className="relative bg-gray-900">
-      <div className="justify-center hidden md:flex">
+      <div className="justify-center hidden pt-8 md:flex">
         <Hero setContact={setContact} contact={contact} />
       </div>
 
-      <div className="md:hidden">
+      <div className="bg-white md:hidden">
         <Profile />
-        <hr className="w-full" />
       </div>
 
       <div className="grid grid-cols-1">
         <div className="flex flex-col items-center justify-center">
-          {data?.sectionMany.map((section, i: number) => {
-            return <Card key={i} {...section} />;
+          {sortedSections?.map((section: any) => {
+            return <Card key={section.position} {...section} />;
           })}
         </div>
       </div>
@@ -38,7 +45,7 @@ export const Home: React.FC<HomeProps> = () => {
             </p>
           </div>
 
-          <div className="flex items-center justify-center w-full py-8 mt-12">
+          <div className="flex items-center justify-center w-full py-8 mt-4">
             <button
               onClick={() => {
                 setContact(true);
