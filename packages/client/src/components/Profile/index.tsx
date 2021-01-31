@@ -10,7 +10,7 @@ export const Profile: React.FC<ProfileProps> = () => {
       className="relative grid h-64 grid-cols-2 px-8"
     >
       <div className="flex flex-col items-start justify-start">
-        <h1 className="mt-4 -mr-12 text-2xl font-bold text-left text-white font-proxima">
+        <h1 className="mt-4 text-2xl font-bold text-left text-white font-proxima">
           AN <span className="underline">EXPERT</span> HANDYMAN IN YOUR AREA.
         </h1>
         <button
@@ -21,7 +21,7 @@ export const Profile: React.FC<ProfileProps> = () => {
           <HiArrowNarrowRight className="text-xl font-bold" />
         </button>
       </div>
-      <div className="flex items-start justify-start -mt-8 -ml-8">
+      <div className="flex items-start justify-start -mt-8 -ml-4">
         <img
           style={{ maxWidth: "110%" }}
           alt="any"

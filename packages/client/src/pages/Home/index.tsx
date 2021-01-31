@@ -4,10 +4,14 @@ import { Card } from "../../components/Card";
 import { Hero } from "../../components/Hero";
 import { Profile } from "../../components/Profile";
 import { useSectionsQuery } from "../../graphql/generated";
+import { useSpring, animated } from "react-spring";
 
 interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
+  // Animation
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+
   const { data } = useSectionsQuery();
 
   const sections = data?.sectionMany;
@@ -21,9 +25,12 @@ export const Home: React.FC<HomeProps> = () => {
   const [contact, setContact] = React.useState(false);
   return (
     <div className="relative bg-gray-900">
-      <div className="justify-center hidden pt-8 md:flex">
+      <animated.div
+        style={props}
+        className="justify-center hidden pt-8 md:flex"
+      >
         <Hero setContact={setContact} contact={contact} />
-      </div>
+      </animated.div>
 
       <div className="bg-white md:hidden">
         <Profile />

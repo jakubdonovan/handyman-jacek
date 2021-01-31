@@ -32,10 +32,14 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
           </p>
         </div>
 
-        <h2 className={`mt-10 text-2xl md:text-4xl ${textColor}`}>
+        <h2 className={`mt-8 text-2xl md:text-4xl ${textColor}`}>
           {props.title}
         </h2>
-        <div className="flex items-center w-auto px-8 py-4 mt-6 -mx-8 space-x-12 bg-white md:-mx-12 md:p-12">
+        <div
+          className={`flex items-center w-auto px-8 py-4 ${
+            props.light && "mt-12"
+          } -mx-8 space-x-12 bg-white md:-mx-12 md:p-12`}
+        >
           <p className="max-w-md text-sm leading-relaxed text-gray-700 md:text-xl">
             {props.longDescription}
           </p>
@@ -49,7 +53,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
         </div>
         <div className="relative flex justify-center w-auto -mx-8 md:mx-0 md:w-full">
           <img
-            className="shadow-2xl md:mt-6"
+            className="mt-6 shadow-2xl md:mt-6"
             alt={props.image.alt}
             src={require(`../../assets/images/${props.image.filename}`).default}
           />
