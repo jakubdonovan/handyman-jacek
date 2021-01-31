@@ -76,7 +76,7 @@ export const Card: React.FC<CardProps> = (props: CardProps) => {
         <hr className="w-full h-2 mt-20 font-bold" />
 
         {/* Slideshow */}
-        <h2 className="p-4 mt-6 text-white">My portfolio</h2>
+        <h2 className={`p-4 mt-6 ${textColor}`}>My portfolio</h2>
         {currentProject && (
           <>
             {currentProject.images.length > 4 && (

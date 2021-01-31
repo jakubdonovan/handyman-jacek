@@ -15,7 +15,7 @@ export const Profile: React.FC<ProfileProps> = () => {
         </h1>
         <button
           style={{ color: "#4C51BF" }}
-          className="flex items-center gap-2 px-4 py-2 mt-4 font-black tracking-wider text-purple-900 uppercase rounded-full font-proxima from-white to-gray-100 bg-gradient-to-t"
+          className="flex items-center gap-2 px-4 py-2 mt-4 font-black tracking-wider text-purple-900 uppercase rounded-full focus:outline-none font-proxima from-white to-gray-100 bg-gradient-to-t"
         >
           contact
           <HiArrowNarrowRight className="text-xl font-bold" />

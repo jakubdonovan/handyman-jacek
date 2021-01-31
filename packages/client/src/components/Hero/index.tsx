@@ -16,7 +16,7 @@ export const Hero: React.FC<HeroProps> = (props) => {
           <div className="max-w-lg pl-12 mt-12 text-left y-8 xl:w-8/12 lg:w-9/12 md:w-full">
             <h1 className="text-5xl font-black leading-tight text-white capitalize font-inter">
               <span className="text-transparent from-purple-500 via-purple-600 to-purple-700 bg-gradient-to-r bg-clip-text">
-                Glenroths
+                Glenrothes
               </span>{" "}
               finest painters & decorators
             </h1>
